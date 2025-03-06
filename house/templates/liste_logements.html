@@ -1,0 +1,90 @@
+ 
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+    <title>Résultats de Recherche</title>
+</head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            box-sizing: border-box;
+            background-color: rgb(187, 250, 231);
+            box-shadow: 560px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+        }
+        input, select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 3px solid #6952ee;
+            border-radius: 4px;
+
+        }
+        button{
+          background-color: rgb(6, 104, 233);
+          text-align: center;
+          max-width: 150px;
+        
+      }
+        
+    </style>   
+
+<body>
+
+<h1>Recherche de Logement</h1>
+<form action="{% url 'recherche_logement' %}" method="GET">
+    <label for="category">Catégorie :</label>
+    <select id="category" name="category" >
+        <option value="tous">Tous</option>
+        <option value="appartement">Appartement</option>
+        <option value="maison">Maison</option>
+        <option value="studio">Studio</option>
+        <option value="chambre">Chambre</option>
+    </select>
+
+    <label for="price">Prix maximum :</label>
+    <input type="number" id="price" name="price" >
+
+    <label for="region">Région :</label>
+    <input type="text" id="region" name="region" >
+
+    <label for="city">Ville :</label>
+    <input type="text" id="city" name="city" >
+
+    <label for="neighborhood">Quartier :</label>
+    <input type="text" id="neighborhood" name="neighborhood">
+
+   
+    <label for="area">Superficie (m²) :</label>
+    <input type="number" id="area" name="area" >
+
+   
+    <button type="submit" id="new">Rechercher</button>
+</form>
+
+
+<h1>Résultats de Recherche</h1>
+<ul>
+    {% for logement in logements %}
+        <li>{{ logement }} <img src="{{ logement.image }}" height="300" width="300" alt="Image de {{ logement.category }}"></li>
+    {% empty %}
+        <li>Aucun logement trouvé.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'recherche_logement' %}">Nouvelle recherche</a>
+
+</body>
+</html>

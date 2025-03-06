@@ -1,0 +1,246 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content%}
+
+
+    
+<style>
+body{
+        padding: 0%;
+        margin-top: 10px;
+    }
+section{
+        transform: scale(1.05); 
+        margin-bottom: 25px; 
+        padding-bottom: 30px;
+        margin-top: 25px;
+        padding-top: 25px;
+    }
+img{
+    box-shadow: 0 0 9px rgb(14, 13, 13);
+    height: 290px;
+    border-radius: 10px;
+    
+    }
+.Acceuil{
+    margin-top: 80px;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 410px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    text-decoration: center;
+    
+
+}
+.Acceuil img  {
+    
+    position: absolute; 
+    border-radius: 10px;
+    width: 70%;
+    height: 400px;
+    opacity: 1,3;
+}
+.Acceuil h4{
+    display: flex;
+    text-align: center;
+    font-size: large;
+    color: rgb(202, 243, 248);
+    background-color: black;
+    font-family: BOLD;
+    height: 50%;
+}
+.texte-defilant{
+    position: relative;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+    text-align: center;
+}
+.texte-defilant p{
+    position: absolute;
+    white-space: nowrap;
+    animation: defilement 25s linear infinite;
+
+}
+.Gallery{
+    padding-left: 51px;
+    padding-right: 6px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.Gallery1{
+    text-align: center;
+}
+</style>
+<body>
+    
+
+<section class="Acceuil">
+    <img src="{% static 'image/img0.jpg' %}" class="card-img-top" alt="..." >
+<div class="texte-defilant">
+    <h4> RECHERCHE UNE MAISON, UN APPARTEMENT, UN STUDIO, OU UNE CHAMBRE SUIVANT TES MOYENS ET TA LOCALISATION AU CAMEROUN</h4>
+</div>
+   <button id="arreter">arreter</button>
+   <button id="reprendre">reprendre</button>
+
+</section>
+
+<section class="Gallery">
+<div class="container mt-6 mb-6">
+    <section class="Gallery1">
+    <h3 class="mb-3">Decouvrez des logements proches de chez vous</h3>
+    <h5>votre future demeure est ici</h5>
+    </section>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                <img src="{% static 'image/img3.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Appartement a louer</h5>
+                    <p class="card-text">situe a yaounde biyem-assiface super marche Niki.</p>
+                   
+                
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                <img src="{% static 'image/img4.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Appartement à louer</h5>
+                    <p class="card-text">decouvrez nos differens logements à moindre cout.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                <img src="{% static 'image/img10.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Appartement à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+     <p>.</p>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                <img src="{% static 'image/img8.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Studio à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+                 
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                <img src="{% static 'image/img7.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Studio à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                
+                <img src="{% static 'image/img11.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Studio à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div> 
+        <p>.</p>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                
+                <img src="{% static 'image/img15.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chambre à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                
+                <img src="{% static 'image/img9.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chambre à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card chadow" style="width: 18rem;">
+                
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE-5bbBMHYtwfrap_BJtwyAhIabONt3IWF2A&s" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chambre à louer</h5>
+                    <p class="card-text"> avec des chambres de luxe pour un confort optimal.</p>
+                    <a href="#" class="btn btn-warning">voire</a>
+                    <a href="#" class="btn btn-success">reservez</a>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+</section>     
+        {% endblock %}
+</body>
+    
+    <SCRIPT LANGUAGE="Javascript">
+                 
+        const texteDefilant = document.querySelector ('.texte-defilant');
+        const arreter = document.getElementbyId('arreter');
+        const reprendre = document.getElementbyId('reprendre');
+        let animation;
+        arreter .addEventListener('click', ()  =>
+        {
+          animation = texteDefilant.animate([
+        { transform: 'translateX(0)'}
+        ], {
+             duration: 1000,
+             fill: 'forwards'
+        });
+      });
+      reprendre .addEventListener('click', ()=>
+         {
+        animation.play();
+      });
+      
+      
+      
+ var small_menu = document.querySelector('.toggle_menu')
+ var menu = document.querySelector('.menu')
+
+ small_menu.onclick = function(){
+      small_menu.classList.toggle('active');
+      menu.classList.toggle('responsive');
+ }
+</script> 
+ 
+    

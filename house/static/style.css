@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+*{
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+    font-family: 'Rubik' , 'sans-serif';
+    
+
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 10px;
+    box-shadow: 0 0 20px black;
+    z-index: 100;
+    text-align: center;
+    border-style: double;
+}
+h3{ 
+    display: flex;
+    text-align: center;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    
+}
+.menu ul{
+        margin-left: 25px;
+        display: flex;
+        list-style: none;
+}
+.menu ul a {
+    margin-left: 10px;
+    text-transform: capitalize;
+    font-size: 20px;
+    text-decoration: 0;
+    position: relative;
+    color: black;
+}
+.menu ul a::after {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    content: "";
+    width: 0px;
+    height: 2px;
+    background-color: orange;
+    transition: 0.1s ease-out;   
+}
+.menu ul a:hover::after {
+     width: 100%;
+     transform: scale(1.06);
+}
+.login {
+    position: relative;
+    text-align: center;   
+    box-shadow: red;
+    border-radius: 0 0 5px rgba(0,0,0,0.2);
+    align-items: center;
+
+}
+.login.button{
+    background-color: rgb(252, 117, 7);
+    font-size: large;
+    transition: 0.1 ease-out;
+    cursor: pointer;
+    display: flex;
+    color: aliceblue;
+    text-transform: uppercase;
+    align-items: center;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+}
+.button a{
+    text-decoration: none;
+    color: aliceblue;
+}
+button:hover{
+    transform: scale(1.06);
+}
+    /* HOME  */
+.home{
+    margin-top: 80px;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+
+}
+.home img  {
+    
+    position: absolute; 
+     
+     
+}
+.home P{
+    display: flex;
+    text-align: center;
+    font-size: large;
+    color: rgb(243, 7, 7);
+    font-style: italic;
+    font-family: BOLD;
+}
+.texte-defilant{
+    position: relative;
+    width: 50%;
+    height: 50px;
+    overflow: hidden;
+}
+.texte-defilant p{
+    position: absolute;
+    white-space: nowrap;
+    animation: defilement 25s linear infinite;
+}
+@keyframes defilement{
+    0% {
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%); 
+    }
+
+}
+button{
+    color: rgb(11, 239, 247);
+    background-color: brown;
+    position: relative;
+    
+    
+}
+
+
+   /* foods*/
+.foods{
+    margin: 50px 0;
+    padding: 0 10%;
+}
+h2{
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'anton', sans-serif;
+    margin: 50px 0;
+    margin-bottom: -8px;
+}
+.plus {
+    position: relative;
+    text-align: right;   
+    box-shadow: red;
+    border-radius: 0 0 5px rgba(0,0,0,0.2);
+    align-items: center;
+
+}
+.plus.button{
+    background-color: rgb(252, 117, 7);
+    font-size: large;
+    transition: 0.1 ease-out;
+    cursor: pointer;
+    display: flex;
+    color: black;
+    text-transform: uppercase;
+    align-items: center;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+}
+button a{
+    text-decoration: none;
+    color: black;
+}
+button:hover{
+    transform: scale(1.06);
+}
+
+
+.foods-list{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    
+
+}
+.foods-list img{
+    box-shadow: 0 0 9px rgba(0, 0, 0, 1);
+    width: 290px;
+    height: 290px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-top: -5px;
+    
+}
+.foods-list img{
+    box-shadow: 0 0 9px rgba(0, 0, 0, 1);
+    width: 290px;
+    height:290px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    
+    
+}
+.h3{
+    text-transform: uppercase; 
+    font-size: 17px;
+
+}
+.foods-list .box {
+    transition: 0,5s ease-out;
+    cursor: pointer;
+}
+.foods-list .box:hover {
+    transform: scale(1.05);
+} 
+table{
+    text-align: center;
+    box-shadow: 10px;
+    background-color: aqua;
+    border-radius: 5px;
+    
+}
+hr{
+    color: brown;
+    box-shadow: 2px;
+    background-color: brown;
+}
+footer{ 
+    padding: 20px 5%;
+    background-color: black;
+    color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+    height: 5%;
+    width: 100%px;
+}
+.services{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+       
+    
+   
+

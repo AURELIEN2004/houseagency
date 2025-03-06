@@ -1,0 +1,10 @@
+<h1>Profil de {{ user.username }}</h1>
+<p>Email : {{ user.email }}</p>
+<p>Email : {{ user.phone }}</p>
+<p>Email : {{ user.password }}</p>
+<a href="{% url 'edit_profile' %}">Modifier</a>
+<a href="{% url 'logout' %}">Déconnexion</a>
+<form action="{% url 'delete_account' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Supprimer le compte</button>
+</form>

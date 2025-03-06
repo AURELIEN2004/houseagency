@@ -1,0 +1,33 @@
+<h1>Informations des Utilisateurs</h1>
+{% for customUser in customUser %}
+    <p>
+        
+         <a href="mailto:{{ customUser.email }}">{{ customUser.email }}</a><br>
+         <a href="tel:{{ customUser.telephone }}">{{ customUser.telephone }}</a><br>
+         <a href="https://wa.me/{{ customUser.telephone }}" target="_blank">Envoyer un message</a>
+    </p>
+{% endfor %}
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Informations des Utilisateurs</title>
+</head>
+<body>
+    <h1>Informations des Utilisateurs</h1>
+    {% for customUser in customUser %}
+        <p>
+            Nom : {{ customUser.username }}<br>
+            Email : <a href="mailto:{{ customUser.email }}"><i class="fas fa-envelope"></i> </a><br>
+            Téléphone : <a href="tel:{{ customUser.phone }}"><i class="fas fa-phone"></i> </a><br>
+            WhatsApp : <a href="https://wa.me/{{ customUser.phone }}" target="_blank"><i class="fab fa-whatsapp"></i> </a>
+        </p>
+    {% endfor %}
+</body>
+</html>
+
+

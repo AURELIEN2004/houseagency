@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+   
+   
+</style>
+<body>
+    <div class="container">
+        <h1>Logement</h1>
+        
+        <table id="customers" border="1">
+            <thead>
+                <th>Id</th>
+                <th>Categorie</th>
+                <th>Prix</th>
+                <th>Region</th>
+                <th>Ville</th>
+                <th>Quartier</th>
+                <th>Description</th>
+                <th>Superficie</th>
+                <th>Image</th>
+                <th colspan="2" id="mid">Action</th>
+            </thead>
+            {% for x in logements %}
+            <tr>
+                <td>{{x.id}}</td>
+                <td>{{x.category}}</td>
+                <td>{{x.price}}</td>
+                <td>{{x.region}}</td>
+                <td>{{x.city}}</td>
+                <td>{{x.neighborhood}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.area}}</td>
+                <td><img src="{{x.image}}" height="200" width="200"></td>
+                <td>
+                    <a href=" update/{{x.id}} "><button id="up">update</button></a>
+                </td>
+                <td>
+                    <a href=" delete/{{x.id}}"><button id="del">delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        <a href="{% url 'add' %}"><button id="new3">Add Logement</button></a>
+    </div>
+</body>
+
+   
+</div>
+
+
+</html>
