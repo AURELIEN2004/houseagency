@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    
+    <h1>User: {{ user.username }}</h1>
+    <h1>User: {{user.email}}</h1>
+    <h1>User: {{profile.phone}}</h1>
+    <a href="{% url 'logout' %}">Se deconnecter</a>
+    <a href="{% url 'edit' %}">Modifier</a>
+</body>
+</html>
+
+{% if  user.is_authenticated %} 
+       {{ request.user.username }}
+       
+ <a href="{% url 'logout' %}">Se deconnecter</a>  
+    {% else %}
+  <a href="{% url 'inscription' %}">s inscrire</a>
+{% endif %}
+
+<h3>Photo de Profil :</h3>
+{% if profile.profile_image %}
+    <img src="{{ profile.profile_image.url }}" alt="Photo de Profil" style="width: 150px; height: auto;">
+{% else %}
+    <p>Aucune photo de profil.</p>
+{% endif %}
+

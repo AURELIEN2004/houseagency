@@ -1,49 +1,108 @@
 
 
-<div class="row">
-    {% for logement in logements %}
-    <div class="col-md-3">
-        <div class="card">
-            <img src="{{ logement.image }}" alt="" class="card-ing-top">
-            <div class="card-body">
-                <div id="aa{{ logement.id }}" class="card-title">{{ logement.category }}</div>
-                <div id="price{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.price }}</div>
-                <a href="{{ logement.id }}" class="btn btn-warning">Voire</a>
-                <button id="{{ logement.id }}" class="btn ted btn-success">Reserver</button>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau avec Tailles Définies</title>
+    <style>
+       
+        .table1{
+            width: 290%;
+            border-collapse: collapse;
+        }
+        .table1 th {
+            width: 489px; /* Largeur de chaque cellule */
+            height: 30px; /* Hauteur de chaque cellule */
+            border: 1px solid #ddd;
+            padding: 8px;
+            
+         }
+         .table1 td {
+            width: 489px; /* Largeur de chaque cellule */
+            height: 30px; /* Hauteur de chaque cellule */
+            border: 1px solid #ddd;
+            padding: 8px;
+            
+         }
+        .table1 th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .table2{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table2 th, td {
+            width: 150px; /* Largeur de chaque cellule */
+            height: 30px; /* Hauteur de chaque cellule */
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+         }
+        .table2 th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Exemple de Tableau</h1>
+<div class="table1">  
+<table>
+
+   <thead>  
+  <tr>
+    <th>image</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+
+<tbody>
+<tr> 
+    <td>
+        <img src="{{ logement.image.url }}" style="width: 490px; height: 250px;">
+    </td>
+    <td>{{ logement.description }}  </td>
+</tr>
+</tbody>
+ </table> 
 </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div>
-                <img src="{{ logement.image }}" width="300px" height="300px" alt="">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="text-warning display-3" style="color:rgb(62, 15, 230)">
-                {{ logement.category }}
-            </div>
-            <div class="text-danger "style="color:orange">
-                Prix :  $ {{ logement.price }}
-            </div>
-            <div class="text-danger ">
-                region : {{ logement.region }}
-            </div>
-            <div class="text-danger ">
-                 Ville : {{ logement.city }}
-             </div>
-             <div class="text-danger ">
-                Quartier : {{ logement.neighborhood }}
-            </div>
-            <div class="text-danger ">
-                Superficie : {{ logement.area }}
-            </div>
-            <div>
-                Description : {{ logement.description }}
-            </div> 
-            <a href="#"><button class="btn btn-warning" style="color:green">Reservez</button></a>
-        </div>
-    </div>
+<div class="table2">
+<table>
+    <thead>
+
+
+        <tr>
+            <th>Categorie</th>
+            <th>Prix</th>
+            <th>Region</th>
+            <th>Ville</th>
+            <th>Quartier</th>
+            <th>Superficie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> {{ logement.category }}</td>
+            <td> $ {{ logement.price }}</td>
+            <td>{{ logement.region }}</td>
+            <td>{{ logement.city }}</td>
+            <td>{{ logement.neighborhood }}</td>
+            <td> {{ logement.area }}</td>
+        </tr>
+       
+    </tbody>
+</table> 
+</div>
+<br>
+
+<button id="{{ logement.id }}" class="btn ted btn-success">Retour</button>
+
+
+</body>
+</html>

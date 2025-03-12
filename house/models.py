@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+
 
 class Logement(models.Model):
     CATEGORIES = [
@@ -16,7 +16,7 @@ class Logement(models.Model):
     neighborhood = models.CharField(max_length=100, blank=True)
     description = models.TextField(blank=True)
     area = models.PositiveIntegerField()
-    image = models.URLField(blank=True)
+    image = models.ImageField(upload_to='house/')
     date_added = models.DateTimeField(auto_now=True)
     
     class Meta:
@@ -27,9 +27,3 @@ class Logement(models.Model):
                                                                                       
 
 
-class CustomUser(AbstractUser):
-    phone = models.CharField(max_length=15, blank=True)
-    
-
-    def __str__(self):
-        return self.username

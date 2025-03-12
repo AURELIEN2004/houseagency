@@ -1,0 +1,13 @@
+
+
+    {% if  user.is_authenticated %} 
+       {{ user.username }}
+ <a href="{% url 'logout' %}">Se deconnecter</a>  
+    {% else %}
+    <p>veuillez vous inscrire</p>
+  <a href="{% url 'register' %}">s inscrire</a>
+{% endif %}
+
+    {% block content %}
+
+    {% endblock %}

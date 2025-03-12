@@ -1,0 +1,106 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>MON AGENCE</title>
+</head>
+
+<body>
+  
+ 
+  
+  
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+</style>
+<body>
+    
+    <div class="container">
+    <div class="row mt-5 mb-5" chadow>
+    <div class="col-lg-6 shadow p-4" >
+
+        <h3>Creer votre compte</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Nom</label>
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input type="text" name="phone" placeholder="Téléphone" required>
+            </div>
+            <div class="form-group">
+                <label for="mot_de_passe">Mot de passe</label>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+            </div>
+            <button type="submit" class="btn btn-success">S'inscrire</button>
+            <p>Already have account <a href="{% url 'login' %}">Se connecter</a></p>
+        </form>
+    </div> 
+    <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj" class="card-img-lef" alt="" height="300" width="300" >
+        
+    </div>
+</div>
+</body>
+</html>
