@@ -30,8 +30,8 @@
         <div class="card">
             <img src="{{ logement.image.url }}" alt="" class="card-ing-top" width="300" height="300">
             <div class="card-body">
-                <div id="aa{{ logement.id }}" class="card-title">{{ logement.category }}</div>
-                <div id="price{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.price }}</div>
+                <div id="aa{{ logement.id }}" class="card-title">{{ logement.categorie }} à {{ logement.ville }}</div>
+                <div id="prix{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.prix }}</div>
                 <a href="{{ logement.id }}" class="btn btn-warning">Voire</a>
                 <button type="submit" id="{{ logement.id }}" class="btn  btn-success">Reserver</button>
 

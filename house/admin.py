@@ -7,6 +7,6 @@ from .models import Logement
 
 # Register your models here.
 class AdminLogement(admin.ModelAdmin):
-    list_display = ('category', 'price', 'region','city','neighborhood','area','date_added')
+    list_display = ('categorie', 'prix','region','ville','quartier','superficie','date_added')
 
 admin.site.register(Logement, AdminLogement)

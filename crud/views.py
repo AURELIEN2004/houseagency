@@ -7,7 +7,7 @@ def gallerie(request):
 
 def ajouter_logement(request):
     if request.method == 'POST':
-        category = request.POST['category']
+        categorie = request.POST['categorie']
         prix = request.POST['prix']
         region = request.POST['region']
         ville = request.POST['ville']
@@ -17,7 +17,7 @@ def ajouter_logement(request):
         image = request.FILES['image']
         
         Logement.objects.create(
-            category=category,
+            categorie=categorie,
             prix=prix,
             region=region,
             ville=ville,
@@ -32,7 +32,7 @@ def ajouter_logement(request):
 def modifier_logement(request, pk):
     logement = get_object_or_404(Logement, pk=pk)
     if request.method == 'POST':
-        logement.category = request.POST['category']
+        logement.categorie = request.POST['categorie']
         logement.prix = request.POST['prix']
         logement.region = request.POST['region']
         logement.ville = request.POST['ville']

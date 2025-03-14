@@ -46,9 +46,9 @@
 <ul>
     {% for logement in logements %}
         <li>
-            <h2>{{ logement.category }} à {{ logement.ville }}</h2>
+            <h2>{{ logement.categorie }} à {{ logement.ville }}</h2>
             <p>{{ logement.description }}</p>
-            <img src="{{ logement.image.url }}" alt="{{ logement.category }}" style="width: 200px;">
+            <img src="{{ logement.image.url }}" alt="{{ logement.categorie }}" style="width: 200px;">
             <p>Prix : {{ logement.prix }} €</p>
             <p>Superficie : {{ logement.superficie }} m²</p>
             <a href="{% url 'modifier_logement' logement.pk %}" class="btn  btn-warning">Modifier</a>

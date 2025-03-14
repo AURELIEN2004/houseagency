@@ -6,7 +6,7 @@ from django.views import *
 
 def rechercher_logement(request):
     logements = Logement.objects.all()
-    category = request.GET.get('category', '')
+    categorie = request.GET.get('categorie', '')
     prix_min = request.GET.get('prix_min', '')
     prix_max = request.GET.get('prix_max', '')
     region = request.GET.get('region', '')
@@ -16,8 +16,8 @@ def rechercher_logement(request):
     superficie_max = request.GET.get('superficie_max', '')
 
     if request.method == 'GET':
-        if category != 'tous':
-            logements = logements.filter(category=category)
+        if categorie != 'tous':
+            logements = logements.filter(category=categorie)
         if prix_min:
             logements = logements.filter(prix__gte=prix_min)
         if prix_max:
@@ -38,7 +38,17 @@ def rechercher_logement(request):
     return render(request, 'liste_logements.html', {'logements': logements})
 
 
+
 def liste_logements(request):
-     return render(request, 'liste_logements.html')
+    logements=Logement.objects.all()
+    item_name = request.GET.get('item-name')
+    if item_name !='' and item_name is not None:
+       logements= Logement.objects.filter(title__icontains=item_name)
+    
+    paginator = Paginator(logements, 4)
+    page = request.GET.get('page')
+    logements= paginator.get_page(page)
+    return render(request,'gallery.html',{'logements':logements})
+   
 def recherche_logement(request):
     return render(request, 'recherche_logement.html')

@@ -9,13 +9,13 @@ class Logement(models.Model):
         ('chambre', 'Chambre'),
     ]
 
-    category = models.CharField(max_length=50, choices=CATEGORIES)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    categorie = models.CharField(max_length=50, choices=CATEGORIES)
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
     region = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    neighborhood = models.CharField(max_length=100, blank=True)
+    ville = models.CharField(max_length=100)
+    quartier = models.CharField(max_length=100, blank=True)
     description = models.TextField(blank=True)
-    area = models.PositiveIntegerField()
+    superficie = models.PositiveIntegerField()
     image = models.ImageField(upload_to='house/')
     date_added = models.DateTimeField(auto_now=True)
     
@@ -23,7 +23,7 @@ class Logement(models.Model):
        ordering = ['-date_added']  
 
     def __str__(self):
-        return f"{self.category} à {self.city} quatier : {self.neighborhood} - {self.area} m²  {self.description}"
+        return f"{self.categorie} à {self.ville} quatier : {self.quartie} - {self.superficie} m²  {self.description}"
                                                                                       
 
 
