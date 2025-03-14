@@ -39,7 +39,6 @@
     <a class="nav-item nav-link btn btn btn-success text-white ml-5" href="{% url 'login' %}">connexion </a>
     <a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'register' %}">creer un compte</a>
     
-    <a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'recherche_logement' %}">rechercher logement</a> 
     
     
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -54,7 +53,7 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'liste_logements' %}">Mes Publications</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'gallerie' %}">Mes Publications</a>
           </li>
           <li class="nav-item">
             <a class="nav-item nav-link  text-white ml-4" href="{% url 'ajouter_logement' %}">Ajouter un logement</a> 
