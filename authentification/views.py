@@ -17,7 +17,7 @@ def register(request):
         UserProfile.objects.create(user=user, phone=phone)
         
         login(request, user)
-        return redirect('account')
+        return redirect('profile')
     return render(request, 'register.html')
 
 def login_view(request):
@@ -27,7 +27,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('account')
+            return redirect('profile')
     return render(request, 'login.html')
 
 @login_required
@@ -65,32 +65,13 @@ def delete_account(request):
     user.delete()
     return redirect('register')
 
-@login_required
-def profile(request):
-    user_profile = UserProfile.objects.get(user=request.user)
-    if request.method == "POST":
-        user = request.user
-        user.email = request.POST.get('email', user.email)
-        user.username = request.POST.get('username', user.username)
-        user.last_name = request.POST.get('last_name', user.last_name)
-
-        # Gestion de la photo de profil
-        if request.FILES:
-            profile_image = request.FILES['profile_image']
-            fs = FileSystemStorage()
-            filename = fs.save(profile_image.name, profile_image)
-            user_profile.profile_image = filename
-        user_profile.phone = request.POST.get('phone', user_profile.phone)
-        
-        user.save()
-        user_profile.save()
-        return redirect('account')
-    return render(request, 'profile.html', {'user': request.user, 'profile': user_profile})
 
 def hase(request):
     
     return render(request,'hase.html')
-
+def profile(request):
+    
+    return render(request,'profile.html')
 @login_required
 def edit(request):
     user_profile = UserProfile.objects.get(user=request.user)

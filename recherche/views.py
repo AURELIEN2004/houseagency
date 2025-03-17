@@ -17,7 +17,7 @@ def rechercher_logement(request):
 
     if request.method == 'GET':
         if categorie != 'tous':
-            logements = logements.filter(category=categorie)
+            logements = logements.filter(categorie=categorie)
         if prix_min:
             logements = logements.filter(prix__gte=prix_min)
         if prix_max:

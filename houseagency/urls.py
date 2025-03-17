@@ -23,7 +23,7 @@ urlpatterns = [
     path('',include ('house.urls')),
     path('crud',include('crud.urls')),
     path('authentification',include('authentification.urls')),
-    path('d',include('recherche.urls')),
+    path('recherche',include('recherche.urls')),
    
 ]
 static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

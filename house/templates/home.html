@@ -16,6 +16,14 @@ section{
         margin-top: 25px;
         padding-top: 25px;
     }
+    section.button{
+width: 350px;
+text-align: center;
+margin-left: 34%;
+padding-top: 1px;
+padding-bottom: 1px;
+
+    }
 img{
     box-shadow: 0 0 9px rgb(14, 13, 13);
     height: 290px;
@@ -76,6 +84,8 @@ img{
 
 .Gallery1{
     text-align: center;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 </style>
 <body>
@@ -88,12 +98,117 @@ img{
 </div>
    <button id="arreter">arreter</button>
    <button id="reprendre">reprendre</button>
-
 </section>
 
+<section class="button">
 
-<a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'recherche_logement' %}">rechercher logement</a> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            box-sizing: border-box;
+            background-color: rgb(249, 252, 251);
+            box-shadow: 560px;
+        }
+        form {
+            display: flex;
+            max-width: 600px;
+        }
+        input, select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 3px solid #6952ee;
+            border-radius: 4px;
+            max-width: 120px;
 
+        }
+       
+      .search-container {
+    max-width: 900px;
+    margin: auto;
+    background: rgb(186, 255, 240);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    margin-right: 10px;
+    margin-bottom: 0; /* Remove bottom margin for horizontal layout */
+    font-weight: bold;
+    padding: 5px;
+    
+}
+.search-form {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+div{
+    padding-left: 10px;
+}
+div.re{
+    padding-left: 30px;
+    padding-top: 10px;
+}
+.search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+        
+    </style>
+ 
+
+
+<h1>Recherche de Logement</h1>
+
+<div class="search-container"> 
+<form action="{% url 'rechercher_logement' %}" method="GET">
+  <div>
+    <label for="categorie">Catégorie :</label><br>
+    <select id="categorie" name="categorie">
+        <option value="tous">Tous</option>
+        <option value="appartement">Appartement</option>
+        <option value="maison">Maison</option>
+        <option value="studio">Studio</option>
+        <option value="chambre">Chambre</option>
+    </select>
+</div> 
+<div>
+    <label for="prix_max">Prix max:</label><br>
+    <input type="number" name="prix_max" id="prix_max" step="0.01">
+  </div>
+  
+  
+  <div>
+    <label for="region">region :</label><br>
+    <input type="text" id="region" name="region">
+</div>
+  <div>
+    <label for="ville">Ville:</label><br>
+    <input type="text" name="ville" id="ville">
+  </div>
+
+<div>
+    <label for="quartier">Quartier:</label><br>
+    <input type="text" name="quartier" id="quartier">
+
+ </div> 
+ <div class="re">
+    <button type="submit" class="search-button">🔍 Rechercher</button>
+</div>
+</form>
+</div>
+<a href="{% url 'recherche_logement' %}">
+
+</section>
 
 <section class="Gallery">
 <div class="container mt-6 mb-6">

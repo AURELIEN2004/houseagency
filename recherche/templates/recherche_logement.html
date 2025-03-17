@@ -1,50 +1,64 @@
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recherche de Logement</title>
-         <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-<title>Bootstrap Example</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <style>
+<style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             box-sizing: border-box;
-            background-color: rgb(187, 250, 231);
+            background-color: rgb(219, 12, 185);
             box-shadow: 560px;
         }
         form {
             display: flex;
-            flex-direction: column;
-            max-width: 500px;
+            max-width: 600px;
         }
         input, select {
             margin-bottom: 10px;
             padding: 10px;
             border: 3px solid #6952ee;
             border-radius: 4px;
+            max-width: 120px;
 
         }
-        button{
-          background-color: rgb(6, 104, 233);
-          text-align: center;
-          max-width: 150px;
-        
-      }
+       
+      .search-container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    margin-right: 10px;
+    margin-bottom: 0; /* Remove bottom margin for horizontal layout */
+    font-weight: bold;
+    padding: 5px;
+    
+}
+.search-form {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+div{
+    padding-left: 10px;
+}
+div.re{
+    padding-left: 30px;
+    padding-top: 10px;
+}
+.search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
         
     </style>
  
@@ -52,8 +66,11 @@
 <body>
 
 <h1>Recherche de Logement</h1>
+
+<div class="search-container"> 
 <form action="{% url 'rechercher_logement' %}" method="GET">
-    <label for="categorie">Catégorie :</label>
+  <div>
+    <label for="categorie">Catégorie :</label><br>
     <select id="categorie" name="categorie">
         <option value="tous">Tous</option>
         <option value="appartement">Appartement</option>
@@ -61,33 +78,32 @@
         <option value="studio">Studio</option>
         <option value="chambre">Chambre</option>
     </select>
-
-    <label for="prix_min">Prix minimum:</label>
-    <input type="number" name="prix_min" id="prix_min" step="0.01">
-
-    <label for="prix_max">Prix maximum:</label>
+</div> 
+<div>
+    <label for="prix_max">Prix max:</label><br>
     <input type="number" name="prix_max" id="prix_max" step="0.01">
-    
-    <label for="region">region :</label>
+  </div>
+  
+  
+  <div>
+    <label for="region">region :</label><br>
     <input type="text" id="region" name="region">
-
-   
-    <label for="ville">Ville:</label>
+</div>
+  <div>
+    <label for="ville">Ville:</label><br>
     <input type="text" name="ville" id="ville">
+  </div>
 
-    <label for="quartier">Quartier:</label>
+<div>
+    <label for="quartier">Quartier:</label><br>
     <input type="text" name="quartier" id="quartier">
 
-    <label for="superficie_min">Superficie minimum:</label>
-    <input type="number" name="superficie_min" id="superficie_min">
-
-    <label for="superficie_max">Superficie maximum:</label>
-    <input type="number" name="superficie_max" id="superficie_max">
-    
-    <button type="submit" class="btn  btn-success">Recherche</button>
+ </div> 
+ <div class="re">
+    <button type="submit" class="search-button">🔍 Rechercher</button>
+</div>
 </form>
-
+</div>
 <a href="{% url 'recherche_logement' %}">
 
 </body>
-</html>

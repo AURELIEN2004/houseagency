@@ -1,32 +1,218 @@
-<!DOCTYPE html>
+
+
+
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <title>Bootstrap Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>MON AGENCE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Offcanvas</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+  
+  <!-- Example Code -->
+  
+   <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        
+            <a class="navbar-brand" href="#">House agency</a>
+            <a class="nav-item nav-link active text-white" href="/">Acceuil </span></a>
+            <a class="nav-item nav-link text-white" href="gallery">Gallery</a>
+            <a class="nav-item nav-link text-white " href="#">A Propos</a>
+            <a class="nav-item nav-link text-white " href="#">contactez-nous</a>
+            <a class="nav-item nav-link btn btn btn-success text-white ml-5" href="{% url 'login' %}">connexion </a>
+            <a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'register' %}">creer un compte</a>
+            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#"></a>
+            
+            <a href="profile.html"><i class="fas fa-user"></i> Compte</a>
+          <a class="navbar-brand" href="#"></a>
+
+          
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MON COMPTE</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'gallerie' %}">Mes publications</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'ajouter_logement' %}">Ajouter une publication</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Publications enregistrer</a>
+                </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .navbar a {
+          color: white;
+         }
+
+        .profile-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .contact-info, .basic-info {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+        }
+        .edit-button, .logout-button, .upload-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .edit-button:hover, .logout-button:hover, .upload-button:hover {
+            background-color: #0056b3;
+        } footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+
+        }
+    </style>
 </head>
 <body>
-    
-    <h1>User: {{ user.username }}</h1>
-    <h1>User: {{user.email}}</h1>
-    <h1>User: {{profile.phone}}</h1>
-    <a href="{% url 'logout' %}">Se deconnecter</a>
-    <a href="{% url 'edit' %}">Modifier</a>
-</body>
-</html>
-
 {% if  user.is_authenticated %} 
-       {{ request.user.username }}
-       
- <a href="{% url 'logout' %}">Se deconnecter</a>  
-    {% else %}
-  <a href="{% url 'inscription' %}">s inscrire</a>
+<h3>Bienvenus {{ user.username }}</h3>
+{{ profile.phone }}
+<div class="profile-container">
+    <img src="profile.jpg" alt="Profile Picture" id="profilePic">
+    
+
+    <input type="file" id="upload" style="display: none;" accept="image/*" onchange="previewImage(event)">
+    <label for="upload" class="upload-button">+</label>
+    <h2>User Profile</h2>
+    <div class="contact-info">
+        <label>Contact Information:</label><br>
+        
+        <strong>Nom:</strong> {{ user.username }}<br>
+        <strong>Email:</strong> {{ user.email }}<br>
+        <strong>Telephone:</strong> {{ profile.phone }}<br>
+    </div>
+    
+    
+    <a href="{% url 'edit' %}" class="edit-button">Modifier</a>
+    <a href="{% url 'logout' %}" class="logout-button">Se deconnecter</a>
+    <br>
+</div>
+
+{% else %}
+
+<h2>Veiller vous authentifier s ils vous plais</h2> 
+<a href="{% url 'register' %}"><button type="submit" class="btn btn-success">s inscrire</button></a>
+
 {% endif %}
 
-<h3>Photo de Profil :</h3>
-{% if profile.profile_image %}
-    <img src="{{ profile.profile_image.url }}" alt="Photo de Profil" style="width: 150px; height: auto;">
-{% else %}
-    <p>Aucune photo de profil.</p>
-{% endif %}
+<script>
+    function previewImage(event) {
+        const img = document.getElementById('profilePic');
+        img.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+
+
+
+
+
+    <footer class="bg-dark p-3">
+      <p class="text-center text-white">Tout droit reservé, developpé par @urelien technology</p>
+    </footer>
+
+    
+  </body>
+</html>
 
