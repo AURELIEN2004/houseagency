@@ -103,6 +103,10 @@
     .navbar a {
         color: white;
     }
+    button{
+      
+      
+    }
   
    
   </style>
@@ -119,15 +123,15 @@
             <img src="{{ logement.image.url }}" alt="" class="card-ing-top" width="300" height="300">
             <div class="card-body">
                 <div id="aa{{ logement.id }}" class="card-title">{{ logement.categorie }} à {{ logement.ville }}</div>
-                <div id="price{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.price }}</div>
+                <div id="price{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.prix }}</div>
                 <a href="{{ logement.id }}" class="btn btn-warning">Voire</a>
                 <button id="{{ logement.id }}" class="btn ted btn-success">Reserver</button>
-                <button>
-                <a href="tel:{{ logement.phone }}"><i class="fas fa-phone"></i> </a>
-                </button>
-                <button>
-                <a href="https://wa.me/237{{ logement.phone }}" target="_blank"><i class="fab fa-whatsapp"></i>
-                 </button> 
+                
+               <button ><a href="tel:{{ logement.phone }}"class="btn btn-success"><i class="fas fa-phone"></i></a></button> 
+
+               <button><a href="https://wa.me/237{{ logement.phone }}" target="_blank"class="btn btn-success"> <i class="fab fa-whatsapp"></i></a></button>
+
+                
             </div>
         </div>
     </div>

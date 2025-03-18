@@ -14,6 +14,7 @@ def ajouter_logement(request):
         quartier = request.POST['quartier']
         description = request.POST['description']
         superficie = request.POST['superficie']
+        phone = request.POST['phone']
         image = request.FILES['image']
         
         Logement.objects.create(
@@ -24,6 +25,7 @@ def ajouter_logement(request):
             quartier=quartier,
             description=description,
             superficie=superficie,
+            phone=phone,
             image=image
         )
         return redirect('gallerie')
@@ -39,6 +41,8 @@ def modifier_logement(request, pk):
         logement.quartier = request.POST['quartier']
         logement.description = request.POST['description']
         logement.superficie = request.POST['superficie']
+        logement.phone = request.POST['phone']
+
         if 'image' in request.FILES:
             logement.image = request.FILES['image']
         logement.save()
@@ -47,6 +51,8 @@ def modifier_logement(request, pk):
     return render(request, 'modifier_logement.html', {'logement': logement})
 
 def supprimer_logement(request, pk):
+    logements = Logement.objects.all()
+
     logement = get_object_or_404(Logement, pk=pk)
     if request.method == 'POST':
         logement.delete()
