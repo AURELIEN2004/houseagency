@@ -168,7 +168,6 @@
 <body>
 {% if  user.is_authenticated %} 
 <h3>Bienvenus {{ user.username }}</h3>
-{{ profile.phone }}
 <div class="profile-container">
     <img src="profile.jpg" alt="Profile Picture" id="profilePic">
     
@@ -191,9 +190,13 @@
 </div>
 
 {% else %}
+<h6>.</h6>
+<h6>.</h6>
 
 <h2>Veiller vous authentifier s ils vous plais</h2> 
 <a href="{% url 'register' %}"><button type="submit" class="btn btn-success">s inscrire</button></a>
+<h2>Vous avez deja un compte ,</h2> 
+<a href="{% url 'login' %}"><button type="submit" class="btn btn-success">Se connecter</button></a>
 
 {% endif %}
 

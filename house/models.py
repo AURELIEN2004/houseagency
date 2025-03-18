@@ -18,12 +18,13 @@ class Logement(models.Model):
     superficie = models.PositiveIntegerField()
     image = models.ImageField(upload_to='house/')
     date_added = models.DateTimeField(auto_now=True)
-    
+    phone = models.CharField(max_length=15, blank=True)
+
     class Meta:
        ordering = ['-date_added']  
 
     def __str__(self):
-        return f"{self.categorie} à {self.ville} quatier : {self.quartie} - {self.superficie} m²  {self.description}"
+        return f"{self.categorie} à {self.ville} quatier : {self.quartier} - {self.superficie} m²  {self.description}"
                                                                                       
 
 
