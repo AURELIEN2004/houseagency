@@ -122,6 +122,12 @@
                 <div id="price{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.price }}</div>
                 <a href="{{ logement.id }}" class="btn btn-warning">Voire</a>
                 <button id="{{ logement.id }}" class="btn ted btn-success">Reserver</button>
+                <button>
+                <a href="tel:{{ logement.phone }}"><i class="fas fa-phone"></i> </a>
+                </button>
+                <button>
+                <a href="https://wa.me/237{{ logement.phone }}" target="_blank"><i class="fab fa-whatsapp"></i>
+                 </button> 
             </div>
         </div>
     </div>
