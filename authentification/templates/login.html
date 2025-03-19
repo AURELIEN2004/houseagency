@@ -15,10 +15,36 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          
+              <a class="navbar-brand" href="#">House agency</a>
+              <a class="nav-item nav-link active text-white" href="/">Acceuil </span></a>
+              <a class="nav-item nav-link text-white" href="gallery">Gallery</a>
+              <a class="nav-item nav-link text-white " href="#">A Propos</a>
+              <a class="nav-item nav-link text-white " href="footer">contactez-nous</a>
+              <a class="nav-item nav-link btn btn btn-success text-white ml-5" href="{% url 'login' %}">connexion </a>
+              <a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'register' %}">creer un compte</a>
+              <a class="navbar-brand" href="#"></a>
+              <a class="navbar-brand" href="#"></a>
+              <a class="navbar-brand" href="#"></a>
+              <a class="navbar-brand" href="#"></a>
+              <a class="navbar-brand" href="#"></a>
+              <a class="navbar-brand" href="#"></a>
+              
+              <a href="{% url 'profile' %}"><i class="fas fa-user"></i> Compte</a>
+            <a class="navbar-brand" href="#"></a>
   
+            
+          
+        </div>
+      </nav> 
     
   
   <style>
+     .navbar a {
+          color: white;
+      }
     body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -90,8 +116,22 @@ button:hover {
         </form>
        </div>
        
-       <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj" class="card-img-lef" alt="" height="300px" width="300px" >
+       <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj" class="card-img-lef" alt="" height="500px" width="500px" >
   
     </div>    
      
 </div>
+
+</div>
+<footer class="bg-dark p-3" >
+    <p class="text-center text-white">Tout droit reservé, developpé par @urelien technology</p>
+   <li> <p class="text-center text-white">contactez-nous 
+    
+      Email : <a href="mailto:feudjioaurelien24@gmail.com"><i class="fas fa-envelope"></i> </a>
+      Téléphone : <a href="tel:659887452"><i class="fas fa-phone"></i> </a>
+      WhatsApp : <a href="https://wa.me/237659887452" target="_blank"><i class="fab fa-whatsapp"></i>
+  </p></li>
+  </footer>
+
+</body>
+</html>
