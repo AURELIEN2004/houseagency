@@ -1,4 +1,5 @@
 # accounts/views.py
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -28,6 +29,9 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect('profile')
+        else:
+            messages.error(request,"nom d'utilisateur ou mots de passe incorect")
+            return redirect("login")
     return render(request, 'login.html')
 
 @login_required

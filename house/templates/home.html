@@ -123,14 +123,15 @@ img{
 
         }
        
-      .search-container {
-    max-width: 900px;
-    margin: auto;
-    background: rgb(206, 209, 209);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    .search-container {
+        max-width: 900px;
+        margin: 10px auto;
+        background: rgb(206, 209, 209);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 50px;
+    }
 label {
     margin-right: 10px;
     margin-bottom: 0; /* Remove bottom margin for horizontal layout */
@@ -147,8 +148,6 @@ div{
     padding-left: 10px;
 }
 div.re{
-    padding-left: 30px;
-    padding-top: 35px;
     max-width: 225px;
     
 }
@@ -160,7 +159,7 @@ div.re{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    height: 50px;
+    height: 45px;
 }
 
 .search-button:hover {
@@ -169,6 +168,9 @@ div.re{
    select{
     height: 50px;
    }     
+   input{
+    border: none;
+   }
     </style>
  
 
@@ -177,9 +179,8 @@ div.re{
 <div class="search-container"> 
 <form action="{% url 'rechercher_logement' %}" method="GET">
   <div>
-    <label for="categorie">Catégorie :</label><br>
-    <select id="categorie" name="categorie">
-        <option value="tous">Tous</option>
+    <select id="categorie" name="categorie"required>
+        <option value="tous">Catégorie</option>
         <option value="appartement">Appartement</option>
         <option value="maison">Maison</option>
         <option value="studio">Studio</option>
@@ -187,23 +188,22 @@ div.re{
     </select>
 </div> 
 <div>
-    <label for="prix_max">Prix max:</label><br>
-    <input type="number" name="prix_max" id="prix_max" step="0.01">
+    <input type="nu" name="prix_max" id="prix_max" placeholder="Votre montant"required>
   </div>
   
   
   <div>
-    <label for="region">region :</label><br>
-    <input type="text" id="region" name="region">
+    
+    <input type="text" id="region" name="region" placeholder="Votre region"required>
 </div>
   <div>
-    <label for="ville">Ville:</label><br>
-    <input type="text" name="ville" id="ville">
+    
+    <input type="text" name="ville" id="ville" placeholder="Votre ville"required>
   </div>
 
 <div>
-    <label for="quartier">Quartier:</label><br>
-    <input type="text" name="quartier" id="quartier">
+    
+    <input type="text" name="quartier" id="quartier" placeholder="Votre quartier"required>
 
  </div> 
  <div class="re">
@@ -331,39 +331,7 @@ div.re{
         </div>  
     </div>
 </div>
-</section>     
-        {% endblock %}
-</body>
-    
-    <SCRIPT LANGUAGE="Javascript">
-                 
-        const texteDefilant = document.querySelector ('.texte-defilant');
-        const arreter = document.getElementbyId('arreter');
-        const reprendre = document.getElementbyId('reprendre');
-        let animation;
-        arreter .addEventListener('click', ()  =>
-        {
-          animation = texteDefilant.animate([
-        { transform: 'translateX(0)'}
-        ], {
-             duration: 1000,
-             fill: 'forwards'
-        });
-      });
-      reprendre .addEventListener('click', ()=>
-         {
-        animation.play();
-      });
-      
-      
-      
- var small_menu = document.querySelector('.toggle_menu')
- var menu = document.querySelector('.menu')
+</section> 
 
- small_menu.onclick = function(){
-      small_menu.classList.toggle('active');
-      menu.classList.toggle('responsive');
- }
-</script> 
- 
-    
+
+{% endblock %}
