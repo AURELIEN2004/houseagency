@@ -1,7 +1,9 @@
+{% extends "index.html" %}
 {% load static %}
+{% block content %}
 
-<!doctype html>
-<html lang="en">
+
+
 
 <head>
     <meta charset="utf-8">
@@ -31,9 +33,8 @@
   
   <style>
       
-    .navbar a {
-        color: white;
-    }
+    
+    
     footer{
         height: 40px;
     }
@@ -43,77 +44,7 @@
     }
   </style>
 
-</head>
-
-  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
-  <!-- Example Code -->
-   <nav class="navbar navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        
-            <a class="navbar-brand" href="#">House agency</a>
-            <a class="nav-item nav-link active text-white" href="/">Acceuil </span></a>
-            <a class="nav-item nav-link text-white" href="gallery">Gallery</a>
-            <a class="nav-item nav-link text-white " href="#">A Propos</a>
-            <a class="nav-item nav-link text-white " href="footer">contactez-nous</a>
-            <a class="nav-item nav-link btn btn btn-success text-white ml-5" href="{% url 'login' %}">connexion </a>
-            <a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'register' %}">creer un compte</a>
-            <a class="navbar-brand" href="#"></a>
-            <a class="navbar-brand" href="#"></a>
-            <a class="navbar-brand" href="#"></a>
-            <a class="navbar-brand" href="#"></a>
-            <a class="navbar-brand" href="#"></a>
-            <a class="navbar-brand" href="#"></a>
-            
-            <a href="{% url 'profile' %}"><i class="fas fa-user"></i> Compte</a>
-          <a class="navbar-brand" href="#"></a>
-
-          
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MON COMPTE</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'gallerie' %}">Mes publications</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'ajouter_logement' %}">Ajouter une publication</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Publications enregistrer</a>
-                </li>
-
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </nav>
+  
 
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
@@ -142,14 +73,4 @@
     </div>
     
   
-  </body>
-<footer class="bg-dark p-3" >
-    <p class="text-center text-white">Tout droit reservé, developpé par @urelien technology</p>
-   <li> <p class="text-center text-white">contactez-nous 
-    
-      Email : <a href="mailto:feudjioaurelien24@gmail.com"><i class="fas fa-envelope"></i> </a>
-      Téléphone : <a href="tel:659887452"><i class="fas fa-phone"></i> </a>
-      WhatsApp : <a href="https://wa.me/237659887452" target="_blank"><i class="fab fa-whatsapp"></i>
-  </p></li>
-  </footer>
-</html>
+    {% endblock %}

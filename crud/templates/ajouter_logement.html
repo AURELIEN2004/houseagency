@@ -1,3 +1,9 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'style.css' %}">
          <!-- Bootstrap CSS -->
@@ -19,7 +25,7 @@
         font-family: Arial, sans-serif;
         margin: 10px;
         box-sizing: border-box;
-        background-color: rgb(187, 250, 231);
+        background-color: rgb(242, 248, 246);
         box-shadow: 560px;
     }
     form {
@@ -57,7 +63,7 @@
      </select> 
             
     <label>Prix:</label>
-    <input type="number" step="0.01" name="prix" required>
+    <input type="number" step="+1000" name="prix" required>
 
     <label>Région:</label>
     <input type="text" name="region" required>
@@ -75,7 +81,7 @@
     <input type="number" step="0.01" name="superficie" required>
 
     <label>Telephone:</label>
-    <input type="text"  name="phone" placeholder="entrer numero valide" required>
+    <input type="tel"  name="phone" placeholder="entrer numero valide" required>
 
     <label>Image:</label>
     <input type="file" name="image" required>
@@ -83,3 +89,4 @@
     <button type="submit" class="btn  btn-success">Ajouter</button>
 </form>
 
+{% endblock %}
