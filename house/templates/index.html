@@ -1,109 +1,1381 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <title>MON AGENCE</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-      
-    .navbar a {
-        color: white;
-    }
-  </style>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-  <title>MON AGENCE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMR-HOUSE - Trouvez votre logement idéal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
+<style>
+    /* Styles généraux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* Message de confirmation */
+#confirmationMsg {
+            display: none;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+body {
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #0066ff;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0052cc;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 40px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+}
+        
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar nav ul li a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar nav ul li a:hover {
+    color: #0066ff;
+    
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+        
+.nav-right .login-btn {
+    margin-right: 20px;
+    color: var(--dark-color);
+}
+        
+.login-btn {
+    background-color: transparent;
+    border: 1px solid black;
+    color: var(--dark-color);
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+        
+.login-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Home Section avec Carousel */
+.home-section {
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    display: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    display: block;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    text-align: left;
+    color: #fff;
+    width: 100%;
+    padding: 0 10%;
+}
+
+.carousel-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    max-width: 750px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-content p {
+    font-size: 1.2rem;
+    max-width: 550px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-arrow.prev {
+    left: 20px;
+}
+
+.carousel-arrow.next {
+    right: 20px;
+}
+                       
+/* Search Box */
+/* Styles généraux */
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: -70px;
+
+
+}
+
+.search-container form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-container form > div {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Style pour tous les champs */
+.search-container select,
+.search-container input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555;
+  background-color: white;
+  outline: none;
+}
+
+.search-container select:focus,
+.search-container input:focus {
+  border-color: #3B6A9C;
+  box-shadow: 0 0 0 2px rgba(59, 106, 156, 0.2);
+}
+
+/* Style pour le select */
+.search-container select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 30px;
+}
+
+/* Style pour le bouton */
+.search-container .search-button {
+  padding: 12px 20px;
+  background-color: #3B6A9C;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 120px;
+  text-transform: uppercase;
+}
+
+.search-container .search-button:hover {
+  background-color: #2c5078;
+}
+
+/* Style pour le conteneur du bouton */
+.search-container .re {
+  display: flex;
+  justify-content: center;
+}
+
+/* Placeholders */
+.search-container input::placeholder {
+  color: #888;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-container form {
+    flex-direction: column;
+  }
+  
+  .search-container form > div {
+    width: 100%;
+  }
+}
+
+.home-intro {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.home-intro h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.home-intro p {
+    color: #666;
+}
+
+/* Properties Section */
+.properties-section {
+    padding: 60px 0;
+}
+
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.property-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.property-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.05);
+}
+
+.property-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #0066ff;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.favorite-btn:hover {
+    background-color: #fff;
+    color: #ff3366;
+}
+
+.property-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0066ff;
+    padding: 15px 15px 5px;
+}
+
+.property-location {
+    font-size: 14px;
+    color: #666;
+    padding: 0 15px 10px;
+}
+
+.property-location i {
+    color: #0066ff;
+    margin-right: 5px;
+}
+
+.property-desc {
+    font-size: 14px;
+    color: #666;
+    padding: 0 15px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.property-features {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.property-features span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: #666;
+}
+
+.property-features span i {
+    color: #0066ff;
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.about-section .container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.about-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #0066ff;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.contact-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #0066ff;
+}
+
+.contact-content {
+    display: flex;
+    gap: 50px;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.contact-item i {
+    font-size: 24px;
+    color: #0066ff;
+}
+
+.contact-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.contact-item p {
+    color: #ccc;
+}
+
+.contact-form {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #0066ff;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+.submit-btn {
+    background-color: #0066ff;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+.btn-submit {
+    background-color: #0069ff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style pour le message de confirmation */
+.confirmation-message {
+    background-color: #0069ff;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+.footer {
+    background-color: #df1111;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-bottom {
+    padding: 10px 0;
+}
+
+/* MEDIA QUERIES FOR RESPONSIVE DESIGN */
+
+/* Pour les tablettes et écrans moyens */
+@media screen and (max-width: 992px) {
+    /* Ajustements pour la navbar */
+    .navbar {
+        padding: 15px 3%;
+    }
+    
+    /* Ajustements pour le carousel */
+    .carousel {
+        height: 400px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 2rem;
+    }
+    
+    .carousel-content p {
+        font-size: 1rem;
+    }
+    
+    /* Ajustements pour la grille de propriétés */
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Ajustements pour la section à propos */
+    .about-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .about-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .about-image {
+        margin-top: 30px;
+    }
+}
+
+/* Pour les smartphones et petits écrans */
+@media screen and (max-width: 768px) {
+    /* Ajustements pour la navbar */
+    .navbar nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        z-index: 1000;
+    }
+    
+    .navbar nav.active {
+        display: block;
+    }
+    
+    .navbar nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .nav-right {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Ajustements pour le carousel */
+    .carousel {
+        height: 300px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajustements pour la search box */
+    .search-box {
+        margin-top: -40px;
+        padding: 15px;
+    }
+    
+    .search-form {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        min-width: 100%;
+    }
+    
+    /* Ajustements pour la grille de propriétés */
+    .properties-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ajustements pour la section contact */
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .contact-info {
+        margin-bottom: 40px;
+    }
+}
+
+/* Pour les très petits écrans */
+@media screen and (max-width: 480px) {
+    /* Ajustements pour la navbar */
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    /* Ajustements pour le carousel */
+    .carousel {
+        height: 250px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.8rem;
+    }
+    
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Ajustements supplémentaires */
+    .property-features {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .property-features span {
+        flex: 1 0 40%;
+    }
+    
+    .home-intro h2 {
+        font-size: 22px;
+    }
+    
+    .contact-section h2, .about-content h2 {
+        font-size: 24px;
+    }
+}
+/* Styles généraux - Ajouts pour responsive */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Media Queries pour rendre le site responsive */
+
+/* Navigation responsive */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .navbar nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: 0.5s;
+        z-index: 999;
+        padding-top: 20px;
+    }
+    
+    .navbar nav.active {
+        left: 0;
+    }
+    
+    .navbar nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .navbar nav ul li {
+        margin-bottom: 20px;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-right {
+        display: none;
+    }
+}
+
+/* Carousel et header responsive */
+@media (max-width: 768px) {
+    .carousel-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .carousel-content p {
+        font-size: 1rem;
+    }
+    
+    .carousel {
+        height: 400px;
+    }
+    
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+/* Search box responsive */
+@media (max-width: 992px) {
+    .search-form {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+    
+    .search-btn {
+        width: 100%;
+    }
+    
+    .search-box {
+        margin-top: -40px;
+    }
+}
+
+/* Properties section responsive */
+@media (max-width: 992px) {
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .properties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* About section responsive */
+@media (max-width: 768px) {
+    .about-section .container {
+        flex-direction: column;
+    }
+    
+    .about-content, .about-image {
+        width: 100%;
+    }
+    
+    .about-image {
+        margin-top: 30px;
+    }
+}
+
+/* Contact section responsive */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+    
+    .contact-form {
+        margin-top: 40px;
+    }
+}
+
+/* Carousel responsive height */
+@media (max-width: 576px) {
+    .carousel {
+        height: 350px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+    }
+}
+/* pour le pivotement des images*/
+/* Styles améliorés pour le carousel avec effet de rotation */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.carousel {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    backface-visibility: hidden;
+    display: none;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    left: 20px;
+}
+
+.carousel-arrow.next {
+    right: 20px;
+}
+
+/* Animation pour les indicateurs d'effet au clic */
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive pour le carousel */
+@media (max-width: 768px) {
+    .carousel {
+        height: 400px;
+    }
+    
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel {
+        height: 350px;
+    }
+    
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+</style>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark shadow">
-    <div class="container">
-      <a class="navbar-brand text-white" href="#">luxe agence</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active text-white" href="/">Acceuil <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link text-white" href="gallery">Gallery</a>
-          <a class="nav-item nav-link text-white " href="#">A Propos</a>
-          <a class="nav-item nav-link text-white " href="#">contactez-nous</a>
-          <a class="nav-item nav-link btn btn btn-success text-white ml-5" href="{% url 'login' %}">connexion </a>
-          <a class="nav-item nav-link btn btn btn-info text-white ml-4" href="{% url 'register' %}">creer un compte</a>
-          <a href="{% url 'profile' %}"><i class="fas fa-user"></i> Compte</a>
+    <!-- Navbar avec logo -->
+    <header class="navbar">
+        <div class="logo">
+            <span><a href="/">🏠CMR-HOUSE</a></span>
+           
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#properties">Propriété</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#contact">Contactez-nous</a></li>
+                
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <a href="#" class="login-btn"><i class="fas fa-user-circle"></i> Login</a>
+            <a href="{% url 'login' %}"><button class="login-btn">Connexion</button></a> 
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>           
 
         </div>
-      </div>
-    </div>
-  </nav>
-  {% block style %}
+    </header>
 
-  {% endblock %}
-      {% block content %}
-
-      {% endblock %}
-      
-
-    <!-- Optional JavaScript -->
-    <!-- jQ<footer class="bg-dark p-3">
-        <p class="text-center text-white">Tout droit reservé, developpé par @urelien technology</p>
-      </footer>uery first, then Popper.js, then Bootstrap JS -->
-      <footer class="bg-dark p-3" >
-        <p class="text-center text-white">Tout droit reservé, developpé par @urelien technology</p>
-       <li> <p class="text-center text-white">contactez-nous 
-        
-          Email : <a href="mailto:feudjioaurelien24@gmail.com"><i class="fas fa-envelope"></i> </a>
-          Téléphone : <a href="tel:659887452"><i class="fas fa-phone"></i> </a>
-          WhatsApp : <a href="https://wa.me/237659887452" target="_blank"><i class="fab fa-whatsapp"></i>
-      </p></li>
-      </footer>
-      
-   
-    
-    {% block js %}
-
+    {% block content %}
     {% endblock %}
-   
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        
+        <p class="text-center text-white">Tout droit reservé, developpé par @urelien technology</p>
+        <li> <p class="text-center text-white">contactez-nous 
+         
+           Email : <a href="mailto:feudjioaurelien24@gmail.com"><i class="fas fa-envelope"></i> </a>
+           Téléphone : <a href="tel:659887452"><i class="fas fa-phone"></i> </a>
+           WhatsApp : <a href="https://wa.me/237659887452" target="_blank"><i class="fab fa-whatsapp"></i>
+       </p></li>
+    </footer>
+
+     <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Récupérer les valeurs des champs
+        const nom = document.querySelector('input[placeholder="eren"]').value;
+        const email = document.querySelector('input[placeholder="eren@gmail.com"]').value;
+        const message = document.querySelector('textarea[placeholder="rerqrgrqgsgsgggg"]').value;
+        
+        // Vérifier que tous les champs sont remplis
+        if (nom.trim() !== '' && email.trim() !== '' && message.trim() !== '') {
+            // Créer le conteneur du message de confirmation
+            const confirmationDiv = document.createElement('div');
+            confirmationDiv.className = 'confirmation-message';
+            
+            // Contenu du message de confirmation
+            confirmationDiv.innerHTML = `
+                <h2 style="margin-bottom: 15px;">Message Envoyé avec Succès!</h2>
+                <p>Merci <strong>${nom}</strong> pour votre message.</p>
+                <p style="margin-bottom: 10px;">Nous vous contacterons bientôt à <strong>${email}</strong>.</p>
+                <div style="margin: 20px 0; height: 2px; background-color: rgba(255,255,255,0.3);"></div>
+                <p style="font-size: 14px;">Référence: #${Date.now().toString().slice(-6)}</p>
+                <p style="font-size: 14px;">Date: ${new Date().toLocaleString('fr-FR')}</p>
+            `;
+            
+            // Remplacer le formulaire par le message de confirmation
+            const formContainer = document.querySelector('.contact-form');
+            formContainer.innerHTML = '';
+            formContainer.appendChild(confirmationDiv);
+        } else {
+            // Message d'erreur si tous les champs ne sont pas remplis
+            alert('Veuillez remplir tous les champs du formulaire avant d\'envoyer.');
+        }
+    });
+
+
+     // Script pour le menu hamburger pour la responsivite
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.navbar nav');
+    
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        
+        // Change l'icône du menu
+        const icon = menuToggle.querySelector('i');
+        if (nav.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Ferme le menu quand on clique sur un lien
+    const navLinks = document.querySelectorAll('.navbar nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+    
+    // Script pour le carousel
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+    
+    // Auto-slide
+    setInterval(() => showSlide(currentSlide + 1), 5000);
+});
+
+
+
+
+
+//pivotement
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner les éléments du carousel
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    
+    // Initialiser les variables
+    let currentSlide = 0;
+    let isAnimating = false;
+    
+    // Ajouter des styles CSS pour les animations
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .carousel {
+            perspective: 1000px;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            transform: rotateY(-90deg) translateZ(50px);
+            display: none;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            transform: rotateY(0deg) translateZ(0px);
+            display: block;
+        }
+        
+        .carousel-slide.next {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+        
+        .carousel-slide.prev {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Fonction pour afficher une slide spécifique
+    function showSlide(index) {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        // Calculer l'index de la nouvelle slide
+        const newIndex = (index + slides.length) % slides.length;
+        
+        // Déterminer la direction de la transition
+        const direction = newIndex > currentSlide ? 'next' : 'prev';
+        
+        // Enlever toutes les classes
+        slides.forEach(slide => {
+            slide.classList.remove('active', 'next', 'prev');
+            slide.style.display = 'none';
+        });
+        
+        // Configurer la slide actuelle
+        slides[currentSlide].classList.add(direction === 'next' ? 'prev' : 'next');
+        slides[currentSlide].style.display = 'block';
+        
+        // Configurer la nouvelle slide
+        slides[newIndex].classList.add('active');
+        slides[newIndex].style.display = 'block';
+        
+        // Mettre à jour l'index courant
+        currentSlide = newIndex;
+        
+        // Réinitialiser l'état d'animation après la transition
+        setTimeout(() => {
+            isAnimating = false;
+        }, 900);
+    }
+    
+    // Gestionnaires d'événements pour les boutons
+    prevBtn.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+    });
+    
+    // Défilement automatique (optionnel)
+    let interval = setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 6000);
+    
+    // Arrêter le défilement automatique quand on survole le carousel
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+    });
+    
+    // Reprendre le défilement automatique quand on quitte le carousel
+    carousel.addEventListener('mouseleave', () => {
+        interval = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 6000);
+    });
+    
+    // Ajouter la navigation au clavier
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            showSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+            showSlide(currentSlide + 1);
+        }
+    });
+    
+    // Pour les appareils tactiles - ajout de swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        // Seuil de mouvement pour détecter un swipe
+        const threshold = 50;
+        
+        if (touchEndX < touchStartX - threshold) {
+            // Swipe vers la gauche - slide suivante
+            showSlide(currentSlide + 1);
+        } else if (touchEndX > touchStartX + threshold) {
+            // Swipe vers la droite - slide précédente
+            showSlide(currentSlide - 1);
+        }
+    }
+});
+    
+     </script>
+    
+
+</body>
+
 </html>
-
-
-
-
-
-   
-          
-     
-
-  
-  
-
- 
-
- 
-    
-
-    
-

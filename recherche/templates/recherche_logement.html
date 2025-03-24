@@ -1,109 +1,132 @@
 
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            box-sizing: border-box;
-            background-color: rgb(219, 12, 185);
-            box-shadow: 560px;
-        }
-        form {
-            display: flex;
-            max-width: 600px;
-        }
-        input, select {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 3px solid #6952ee;
-            border-radius: 4px;
-            max-width: 120px;
-
-        }
-       
-      .search-container {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-label {
-    margin-right: 10px;
-    margin-bottom: 0; /* Remove bottom margin for horizontal layout */
-    font-weight: bold;
-    padding: 5px;
-    
-}
-.search-form {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
-div{
-    padding-left: 10px;
-}
-div.re{
-    padding-left: 30px;
-    padding-top: 10px;
-}
-.search-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Styles généraux */
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.search-button:hover {
-    background-color: #0056b3;
+.search-container form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
 }
-        
-    </style>
- 
+
+.search-container form > div {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Style pour tous les champs */
+.search-container select,
+.search-container input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555;
+  background-color: white;
+  outline: none;
+}
+
+.search-container select:focus,
+.search-container input:focus {
+  border-color: #3B6A9C;
+  box-shadow: 0 0 0 2px rgba(59, 106, 156, 0.2);
+}
+
+/* Style pour le select */
+.search-container select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 30px;
+}
+
+/* Style pour le bouton */
+.search-container .search-button {
+  padding: 12px 20px;
+  background-color: #3B6A9C;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 120px;
+  text-transform: uppercase;
+}
+
+.search-container .search-button:hover {
+  background-color: #2c5078;
+}
+
+/* Style pour le conteneur du bouton */
+.search-container .re {
+  display: flex;
+  justify-content: center;
+}
+
+/* Placeholders */
+.search-container input::placeholder {
+  color: #888;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-container form {
+    flex-direction: column;
+  }
+  
+  .search-container form > div {
+    width: 100%;
+  }
+}
+</style>
 </head>
 <body>
 
 <h1>Recherche de Logement</h1>
 
-<div class="search-container"> 
-<form action="{% url 'rechercher_logement' %}" method="GET">
-  <div>
-    <label for="categorie">Catégorie :</label><br>
-    <select id="categorie" name="categorie">
-        <option value="tous">Tous</option>
-        <option value="appartement">Appartement</option>
-        <option value="maison">Maison</option>
-        <option value="studio">Studio</option>
-        <option value="chambre">Chambre</option>
-    </select>
-</div> 
-<div>
-    <label for="prix_max">Prix max:</label><br>
-    <input type="number" name="prix_max" id="prix_max" step="0.01">
+<div class="search-container">
+    <form action="{% url 'rechercher_logement' %}" method="GET">
+      <div>
+        <select id="categorie" name="categorie">
+          <option value="tous">Catégories</option>
+          <option value="appartement">Appartement</option>
+          <option value="maison">Maison</option>
+          <option value="studio">Studio</option>
+          <option value="chambre">Chambre</option>
+        </select>
+      </div>
+      <div>
+        <input type="number" name="prix_max" id="prix_max" step="0.01" placeholder="entrer un prix">
+      </div>
+      <div>
+        <input type="text" id="region" name="region" placeholder="entrer une region">
+      </div>
+      <div>
+        <input type="text" name="ville" id="ville" placeholder="enter une ville">
+      </div>
+      <div>
+        <input type="text" name="quartier" id="quartier" placeholder="entrer un quartier">
+      </div>
+      <div class="re">
+        <button type="submit" class="search-button">SEARCH</button>
+      </div>
+    </form>
   </div>
-  
-  
-  <div>
-    <label for="region">region :</label><br>
-    <input type="text" id="region" name="region">
-</div>
-  <div>
-    <label for="ville">Ville:</label><br>
-    <input type="text" name="ville" id="ville">
-  </div>
-
-<div>
-    <label for="quartier">Quartier:</label><br>
-    <input type="text" name="quartier" id="quartier">
-
- </div> 
- <div class="re">
-    <button type="submit" class="search-button">🔍 Rechercher</button>
-</div>
-</form>
-</div>
 <a href="{% url 'recherche_logement' %}">
 
 </body>
