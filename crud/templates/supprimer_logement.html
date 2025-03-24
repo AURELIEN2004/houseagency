@@ -1,76 +1,86 @@
 {% extends "index.html" %}
 {% load static %}
+
 {% block content %}
 
-
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
-    <!-- Bootstrap CSS -->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>MON AGENCE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Offcanvas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <style>
-      
+ 
+
+ <style>   
     
     
-    footer{
-        height: 40px;
+    .container {
+        display: flex;
+        width: 80%;
+        max-width: 1000px;
+        margin: 50px auto; /* Centrer le conteneur avec un espace en haut */
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif; /* Changer la police de base */
     }
-    body{
-        text-align: center;
-        margin-top: 111px;
+   
+    .form-container button {
+        margin-top: 10px;
+        background-color: #28a745; /* Vert */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-weight: bold; /* Mettre le texte en gras */
     }
-  </style>
+    
+    .form-container button:hover {
+        background-color: #218838; /* Vert plus foncé */
+    }
+    
+    .form-container a {
+        display: block;
+        margin-top: 10px;
+        color: #007bff; /* Bleu */
+        text-decoration: none;
+        font-weight: bold; /* Mettre le texte en gras */
+    }
+    
+    .form-container a:hover {
+        text-decoration: underline;
+    }
+    
+    .image-container {
+        flex: 1;
+        overflow: hidden;
+        border-radius: 0 8px 8px 0; /* Coins arrondis à droite */
+    }
+    
+    .image-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 0 8px 8px 0; /* Coins arrondis à droite */
+    }
+  </style> 
+   
+          <div class="container">
+              <div class="message-container">
+                <h1>Supprimer le logement</h1>
+                <p>Êtes-vous sûr de vouloir supprimer ce logement ?</p>
+                <p>SI OUI</p>
+                <button type="submit" class="btn btn-danger">Confirmer la suppression</button><br><br>
+                <br><p>SI NON</p>
+                <button class=" btn btn-info"><a href="{% url 'gallerie' %}" style="color: aliceblue;">Annuler</a></button>
+              </div>
 
-  
+              <div class="image-container">
+                <img src="{{ logement.image.url }}" alt="Image du logement" style="height: 300px", style="width: 300px;">
 
-<link rel="stylesheet" href="{% static 'style.css' %}">
-
-
-<h1>Supprimer le logement</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <img src="{{ logement.image.url }}" alt="" class="card-ing-top" width="400" height="400">
-                <div class="card-body">
-                    <div id="aa{{ logement.id }}" class="card-title">{{ logement.categorie }} à {{ logement.ville }}</div>
-                    <div id="price{{ logement.id }}" style="color:orange" class="card-text"> fcfa {{ logement.prix }}</div>
-                    
-                    
-                </div>
+                <div id="aa{{ logement.id }}" class="card-title">{{ logement.categorie }} à {{ logement.ville }}</div>
+                <div id="price{{ logement.id }}" style="color:orange" class="card-text">fcfa {{ logement.prix }}</div> 
             </div>
-        </div>
-        <div class="left">
-  <p>Êtes-vous sûr de vouloir supprimer ce logement ?</p>
 
-    <button type="submit">Confirmer la suppression</button>
+          </div>
 
-<a href="{% url 'gallerie' %}">Annuler</a>
-
-        </div>
-    </div>
-    
-  
-    {% endblock %}
+{% endblock %}

@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from house.models import Logement
+from django.contrib.auth.decorators import login_required
+
 
 def gallerie(request):
     logements = Logement.objects.all()
     return render(request, 'gallerie.html', {'logements': logements})
 
+@login_required
 def ajouter_logement(request):
     if request.method == 'POST':
         categorie = request.POST['categorie']
@@ -31,6 +34,7 @@ def ajouter_logement(request):
         return redirect('gallerie')
     return render(request, 'ajouter_logement.html')
 
+@login_required
 def modifier_logement(request, pk):
     logement = get_object_or_404(Logement, pk=pk)
     if request.method == 'POST':
@@ -50,6 +54,7 @@ def modifier_logement(request, pk):
     
     return render(request, 'modifier_logement.html', {'logement': logement})
 
+@login_required
 def supprimer_logement(request, pk):
     logements = Logement.objects.all()
 
