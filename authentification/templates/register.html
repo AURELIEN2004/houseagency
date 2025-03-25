@@ -62,6 +62,11 @@ button:hover {
     <h3>Creer votre compte</h3>
     <form method="post">
         {% csrf_token %}
+                    <select class="form-control mb-3" name="typec" required>
+                        <option value="">Type de compte</option>
+                        <option value="locataire">Locataire</option>
+                        <option value="propriétaire">Propriétaire</option>
+                    </select>
                     <div class="form-group">
                         <label for="username">Nom</label>
                         <input type="text" name="username" placeholder="Nom d'utilisateur" required>

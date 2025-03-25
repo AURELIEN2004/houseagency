@@ -15,8 +15,6 @@ urlpatterns = [
     path('gallery', gallery, name='gallery'),
     path('<int:myid>', detail, name="detail"),
     
-    path('<int:myid>', detail, name="detail"),
-
    # path('informations/', afficher_informations, name='informations'),
 
 

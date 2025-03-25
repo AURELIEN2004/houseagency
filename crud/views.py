@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from house.models import Logement
 from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def gallerie(request):
-    logements = Logement.objects.all()
+    logements = request.user.proprietaire.logements.all()
     return render(request, 'gallerie.html', {'logements': logements})
 
 @login_required
@@ -20,7 +20,7 @@ def ajouter_logement(request):
         phone = request.POST['phone']
         image = request.FILES['image']
         
-        Logement.objects.create(
+        logement = Logement.objects.create(
             categorie=categorie,
             prix=prix,
             region=region,
@@ -31,6 +31,7 @@ def ajouter_logement(request):
             phone=phone,
             image=image
         )
+        request.user.proprietaire.logements.add(logement)
         return redirect('gallerie')
     return render(request, 'ajouter_logement.html')
 

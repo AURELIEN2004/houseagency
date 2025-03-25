@@ -1123,8 +1123,12 @@ img {
             </ul>
         </nav>
         <div class="nav-right">
-            <a href="{% url 'profile' %}" class="login-btn"><i class="fas fa-user-circle"></i> Login</a>
+            {% if request.user %}
+            <a href="{% url 'profile' %}" class="login-btn"><i class="fas fa-user-circle"></i> Dashbord</a>
+            <a href="{% url 'logout' %}" class="login-btn"><i class="fas fa-user-circle" onclick="return confirm('Voulez-vous vraiment vous déconnecter');"></i> Deconnection</a>
+            {% else %}
             <a href="{% url 'login' %}"><button class="login-btn">Connexion</button></a> 
+            {% endif %}
         </div>
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>           
@@ -1133,7 +1137,7 @@ img {
     </header>
 
     {% block content %}
-    
+
     {% endblock %}
 
 

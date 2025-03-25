@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+    }
+    
+
+    .profile-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+    }
+    h2 {
+        color: #333;
+    }
+    img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+    .contact-info, .basic-info {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    label {
+        font-weight: bold;
+    }
+    .edit-button, .logout-button, .upload-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    .edit-button:hover, .logout-button:hover, .upload-button:hover {
+        background-color: #0056b3;
+    } footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+
+    }
+</style>
+
+<div class="profile-container">
+    <img src="profile.jpg" alt="Profile Picture" id="profilePic">
+    
+
+    <input type="file" id="upload" style="display: none;" accept="image/*" onchange="previewImage(event)">
+    <label for="upload" class="upload-button">+</label>
+    <h2>User Profile</h2>
+    <div class="contact-info">
+        <label>Contact Information:</label><br>
+        
+        <strong>Nom:</strong> {{ profile.user.username }}<br>
+        <strong>Email:</strong> {{ profile.user.email }}<br>
+        <strong>Telephone:</strong> {{ profile.phone }}<br>
+    </div>
+    
+    
+    <a href="{% url 'edit' %}" class="edit-button">Modifier</a>
+    <a href="{% url 'logout' %}" class="logout-button">Se deconnecter</a>
+    <br>
+</div>
+
+<script>
+    function previewImage(event) {
+        const img = document.getElementById('profilePic');
+        img.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+
+{% endblock %}

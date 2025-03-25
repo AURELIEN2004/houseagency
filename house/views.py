@@ -22,7 +22,8 @@ from django.shortcuts import render, redirect
 
 
 def home(request):
-    return render (request,'home.html')
+    logements = Logement.objects.all()
+    return render (request,'home.html', {'logements':logements})
 
 def base(request):
     return render (request,'base.html')
