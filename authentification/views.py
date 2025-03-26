@@ -15,6 +15,7 @@ def register(request):
         email = request.POST['email']
         phone = request.POST['phone']
         password = request.POST['password']
+        profile_image = request.FILES.get('profile_image')  # Get the uploaded profile image
         
         if User.objects.filter(username=username).exists():
             msg = "Ce nom d'utilisateur est déjà pris."
@@ -24,9 +25,9 @@ def register(request):
             user = User.objects.create_user(username=username, email=email, password=password)
 
             if typec == "locataire":
-                Locataire.objects.create(user=user, phone=phone)
+                Locataire.objects.create(user=user, phone=phone, profile_image=profile_image)
             elif typec == "propriétaire":
-                Proprietaire.objects.create(user=user, phone=phone)
+                Proprietaire.objects.create(user=user, phone=phone, profile_image=profile_image)
             
             login(request, user)
             return redirect('home')
@@ -72,7 +73,7 @@ def edit(request):
         
         user.save()
         user_profile.save()
-        return redirect('profile')
+        return redirect('compte')
     return render(request, 'edit.html', {'user': request.user, 'profile': user_profile})
 
 @login_required

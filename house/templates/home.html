@@ -39,33 +39,50 @@
 
     <!-- Search Box -->
     <div class="search-container">
-        <form action="{% url 'rechercher_logement' %}" method="GET">
-            <div>
-                <select id="categorie" name="categorie">
-                    <option value="catégorie" disabled selected>Catégories</option>
-                    <option value="appartement">Appartement</option>
-                    <option value="maison">Maison</option>
-                    <option value="studio">Studio</option>
-                    <option value="chambre">Chambre</option>
-                </select>
+    <form action="{% url 'rechercher_logement' %}" method="GET">
+        {% if msg %}
+            <div class="alert alert-danger mb-3">
+                {{ msg }}
             </div>
-            <div>
-                <input type="number" name="prix_max" id="prix_max" step="0.01" placeholder="entrer un prix">
-            </div>
-            <div>
-                <input type="text" id="region" name="region" placeholder="entrer une region">
-            </div>
-            <div>
-                <input type="text" name="ville" id="ville" placeholder="enter une ville">
-            </div>
-            <div>
-                <input type="text" name="quartier" id="quartier" placeholder="entrer un quartier">
-            </div>
-            <div class="re">
-                <button type="submit" class="search-button">SEARCH</button>
-            </div>
-        </form>
-    </div>
+        {% endif %}
+        
+        <div>
+            <select id="categorie" name="categorie">
+                <option value="catégorie" disabled selected>Catégories</option>
+                <option value="appartement">Appartement</option>
+                <option value="maison">Maison</option>
+                <option value="studio">Studio</option>
+                <option value="chambre">Chambre</option>
+            </select>
+        </div>
+        
+        <div>
+            <input type="number" name="prix_max" id="prix_max" step="0.01" placeholder="entrer un prix">
+        </div>
+        
+        <div>
+            <input type="text" id="region" name="region" placeholder="entrer une region">
+        </div>
+        
+        <div>
+            <input type="text" name="ville" id="ville" placeholder="enter une ville">
+        </div>
+        
+        <div>
+            <input type="text" name="quartier" id="quartier" placeholder="entrer un quartier">
+        </div>
+        
+        <div class="re">
+            <button type="submit" class="search-button">SEARCH</button>
+        </div>
+    </form>
+    
+    {% if not logements %}
+        <div class="no-results-message">
+            <p>Aucun logement trouvé pour les critères sélectionnés. Veuillez essayer avec d'autres options.</p>
+        </div>
+    {% endif %}
+</div>
     <div class="home-intro">
         <h2>Découvre ta futur demeure ici</h2>
         <p>Faites votre choix parmi une game de selection</p>
