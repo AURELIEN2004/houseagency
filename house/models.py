@@ -17,8 +17,13 @@ class Logement(models.Model):
     description = models.TextField(blank=True)
     superficie = models.PositiveIntegerField()
     image = models.ImageField(upload_to='house/')
-    date_added = models.DateTimeField(auto_now=True)
     phone = models.CharField(max_length=15, blank=True)
+    nb_room = models.FloatField(max_length=15, blank=True)
+    nb_bath = models.FloatField(max_length=15, blank=True)
+    date_added = models.DateTimeField(auto_now=True)
+
+
+
 
     class Meta:
        ordering = ['-date_added']  

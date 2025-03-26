@@ -45,9 +45,9 @@ def liste_logements(request):
     if item_name !='' and item_name is not None:
        logements= Logement.objects.filter(title__icontains=item_name)
     
-    paginator = Paginator(logements, 4)
-    page = request.GET.get('page')
-    logements= paginator.get_page(page)
+    # paginator = Paginator(logements, 4)
+    # page = request.GET.get('page')
+    # logements= paginator.get_page(page)
     return render(request,'gallery.html',{'logements':logements})
    
 def recherche_logement(request):

@@ -1,100 +1,105 @@
-{% extends "index.html"  %}
+{% extends "index.html" %}
 {% load static %}
 
 {% block content %}
-    
 
-    <!-- Section Home avec carousel -->
-    <section id="home" class="home-section">
-        <div class="carousel-container">
-            <div class="carousel">
-                <div class="carousel-slide active">
-                    <img src="{% static 'image/image1.jpg' %}" class="card-img-top" alt="...">
-                    <div class="carousel-content">
-                        <h1>Recherche une maison/chambre suivant tes moyens et ta localisation</h1>
-                        <p>Trouve une nouvelle chambre / maison où tu te sentiras comme à la maison et profite et sois libre.</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="{% static 'image/hero.jpg' %}" class="card-img-top" alt="...">
-                    <div class="carousel-content">
-                        <h1>Des logements pour tous les budgets</h1>
-                        <p>Une sélection variée pour répondre à vos besoins et à votre budget.</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="{% static 'image/img0.jpg' %}" class="card-img-top" alt="...">
-                    <div class="carousel-content">
-                        <h1>Emplacements stratégiques</h1>
-                        <p>Des propriétés situées dans les meilleurs quartiers et localisations.</p>
-                    </div>
+<style>
+
+</style>
+<!-- Section Home avec carousel -->
+<section id="home" class="home-section">
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <img src="{% static 'image/image1.jpg' %}" class="card-img-top" alt="...">
+                <div class="carousel-content">
+                    <h1>Recherche une maison/chambre suivant tes moyens et ta localisation</h1>
+                    <p>Trouve une nouvelle chambre / maison où tu te sentiras comme à la maison et profite et sois
+                        libre.</p>
                 </div>
             </div>
-            <button class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-slide">
+                <img src="{% static 'image/hero.jpg' %}" class="card-img-top" alt="...">
+                <div class="carousel-content">
+                    <h1>Des logements pour tous les budgets</h1>
+                    <p>Une sélection variée pour répondre à vos besoins et à votre budget.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="{% static 'image/img0.jpg' %}" class="card-img-top" alt="...">
+                <div class="carousel-content">
+                    <h1>Emplacements stratégiques</h1>
+                    <p>Des propriétés situées dans les meilleurs quartiers et localisations.</p>
+                </div>
+            </div>
         </div>
+        <button class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
+    </div>
 
     <!-- Search Box -->
     <div class="search-container">
         <form action="{% url 'rechercher_logement' %}" method="GET">
-          <div>
-            <select id="categorie" name="categorie">
-              <option value="catégorie" disabled selected>Catégories</option>
-              <option value="appartement">Appartement</option>
-              <option value="maison">Maison</option>
-              <option value="studio">Studio</option>
-              <option value="chambre">Chambre</option>
-            </select>
-          </div>
-          <div>
-            <input type="number" name="prix_max" id="prix_max" step="0.01" placeholder="entrer un prix">
-          </div>
-          <div>
-            <input type="text" id="region" name="region" placeholder="entrer une region">
-          </div>
-          <div>
-            <input type="text" name="ville" id="ville" placeholder="enter une ville">
-          </div>
-          <div>
-            <input type="text" name="quartier" id="quartier" placeholder="entrer un quartier">
-          </div>
-          <div class="re">
-            <button type="submit" class="search-button">SEARCH</button>
-          </div>
+            <div>
+                <select id="categorie" name="categorie">
+                    <option value="catégorie" disabled selected>Catégories</option>
+                    <option value="appartement">Appartement</option>
+                    <option value="maison">Maison</option>
+                    <option value="studio">Studio</option>
+                    <option value="chambre">Chambre</option>
+                </select>
+            </div>
+            <div>
+                <input type="number" name="prix_max" id="prix_max" step="0.01" placeholder="entrer un prix">
+            </div>
+            <div>
+                <input type="text" id="region" name="region" placeholder="entrer une region">
+            </div>
+            <div>
+                <input type="text" name="ville" id="ville" placeholder="enter une ville">
+            </div>
+            <div>
+                <input type="text" name="quartier" id="quartier" placeholder="entrer un quartier">
+            </div>
+            <div class="re">
+                <button type="submit" class="search-button">SEARCH</button>
+            </div>
         </form>
-      </div>
-        <div class="home-intro">
-        <h2>Découvre ta futur demeure ici</h2>
-        <p>Lorem ipsum lor dos es minimum bla bla nim nian</p>
     </div>
-    </section>
-   
-    
-    <!-- Section Properties avec images de logements -->
-    <section id="properties" class="properties-section">
-        <div class="container">
-            <div class="properties-grid">
-                {% for logement in logements %}
-                <!-- Rangée 1 -->
-                <div class="property-card">
-                    <div class="property-image">
-                        <img src="{{logement.image.url}}" class="card-img-top" alt="...">
-                        <span class="property-tag">{{logement.categorie}}</span>
-                        <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                    <div class="property-price">{{logement.prix}} Xaf/Mois</div>
-                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> {{logement.region}}, {{logement.ville}}/{{logement.quartier}}</div>
-                    <div class="property-desc">{{ logement.description|truncatechars:50 }}</div>
-                    <div class="property-features">
-                        <span><i class="fas fa-bed"></i> {{logement.nb_bed}}</span>
-                        <span><i class="fas fa-bath"></i> {{logement.nb_bath}}</span>
-                        <span><i class="fas fa-ruler-combined"></i> {{logement.superficie}}</span>
-                        <span><i class="fas fa-warehouse"></i> {{logement.nb_room}}</span>
-                    </div>
-                </div>
-                {% endfor %}
+    <div class="home-intro">
+        <h2>Découvre ta futur demeure ici</h2>
+        <p>Faites votre choix parmi une game de selection</p>
+    </div>
+</section>
 
-                <!-- <div class="property-card">
+
+<!-- Section Properties avec images de logements -->
+<section id="properties" class="properties-section">
+    <div class="container">
+        <div class="properties-grid">
+            {% for logement in logements %}
+            <!-- Rangée 1 -->
+            <div class="property-card">
+                <div class="property-image">
+                    <img src="{{logement.image.url}}" class="card-img-top" alt="..." style="height: 300px; width: 370px;" >
+                    <span class="property-tag">{{logement.categorie}}</span>
+                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="property-price">{{logement.prix}} Xaf/Mois</div>
+                <div class="property-location"><i class="fas fa-map-marker-alt"></i> {{logement.region}},
+                    {{logement.ville}}/{{logement.quartier}}</div>
+                <div class="property-desc">{{ logement.description|truncatechars:50 }}</div>
+                <div class="property-features">
+                    <span><i class="fas fa-bed"></i> {{logement.nb_room}}</span>
+                    <span><i class="fas fa-bath"></i> {{logement.nb_bath}}</span>
+                    <span><i class="fas fa-ruler-combined"></i> {{logement.superficie}}</span>
+                    <!-- <span><i class="fas fa-warehouse"></i> {{logement.nb_room}}</span> -->
+                </div>
+            </div>
+        
+            {% endfor %}
+
+            <!-- <div class="property-card">
                     <div class="property-image">
                         <img src="{% static 'image/img4.jpeg' %}" class="card-img-top" alt="...">
                         <span class="property-tag">Appartement</span>
@@ -179,82 +184,86 @@
                         <span><i class="fas fa-warehouse"></i> 1</span>
                     </div>
                 </div> -->
-            </div>
         </div>
-    </section>
-
-    <!-- Section À propos -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="about-content">
-                <h2>À Propos de Nous</h2>
-                <p>Nous sommes une agence immobilière passionnée, dédiée à vous aider à trouver la maison parfaite. Avec des années d'expérience dans l'immobilier, nous comprenons les besoins uniques de nos clients et offrons des services personnalisés pour chaque projet immobilier.</p>
-                <p>Que vous cherchiez à acheter, vendre ou louer, notre équipe d'experts est là pour vous guider à chaque étape. Nous croyons en une approche transparente et professionnelle pour garantir votre satisfaction.</p>
-                <a href="#contact" class="btn-primary">Nous Contacter</a>
-            </div>
-            <div class="about-image">
-                <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj" alt="Appartement">
-            </div>
+    </div>
+</section>
+<!-- Section À propos -->
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="about-content">
+            <h2>À Propos de Nous</h2>
+            <p>Nous sommes une agence immobilière passionnée, dédiée à vous aider à trouver la maison parfaite. Avec des
+                années d'expérience dans l'immobilier, nous comprenons les besoins uniques de nos clients et offrons des
+                services personnalisés pour chaque projet immobilier.</p>
+            <p>Que vous cherchiez à acheter, vendre ou louer, notre équipe d'experts est là pour vous guider à chaque
+                étape. Nous croyons en une approche transparente et professionnelle pour garantir votre satisfaction.
+            </p>
+            <a href="#contact" class="btn-primary">Nous Contacter</a>
         </div>
-    </section>
-    
+        <div class="about-image">
+            <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj"
+                alt="Appartement">
+        </div>
+    </div>
+</section>
 
-    <!-- Section Contact -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Contactez-nous</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Notre Adresse</h3>
-                            <p>123 Rue Principale, Douala, Cameroun</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h3>Téléphone</h3>
-                            <p>(237) 6123-5789</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>info@bailleur.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Heures d'ouverture</h3>
-                            <p>Lun-Ven: 8h-18h | Sam: 9h-15h</p>
-                        </div>
+
+<!-- Section Contact -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2>Contactez-nous</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Notre Adresse</h3>
+                        <p>123 Rue Principale, yaounde, Cameroun</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="eren" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="eren@gmail.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="rerqrgrqgsgsgggg" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-submit">Envoyer</button>
-                    </form>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h3>Téléphone</h3>
+                        <p>(237) 659887452</p>
+                    </div>
                 </div>
-                <div id="confirmationMsg">Votre message a été envoyé avec succès. Nous vous contacterons bientôt!</div>
-
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>feudjioaurelien24@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Heures d'ouverture</h3>
+                        <p>Lun-Ven: 8h-18h | Sam: 9h-15h</p>
+                    </div>
+                </div>
             </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="entrez un nom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="entrez une email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="entrez votre message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Envoyer</button>
+                </form>
+            </div>
+            <div id="confirmationMsg">Votre message a été envoyé avec succès. Nous vous contacterons bientôt!</div>
+
         </div>
-    </section>
-    
-    {% endblock  %}
+    </div>
+</section>
+
+{% endblock %}

@@ -18,6 +18,9 @@ def ajouter_logement(request):
         description = request.POST['description']
         superficie = request.POST['superficie']
         phone = request.POST['phone']
+        nb_room = request.POST['nb_room']
+        nb_bath = request.POST['nb_bath']
+
         image = request.FILES['image']
         
         logement = Logement.objects.create(
@@ -28,6 +31,8 @@ def ajouter_logement(request):
             quartier=quartier,
             description=description,
             superficie=superficie,
+            nb_room=nb_room,
+            nb_bath=nb_bath,
             phone=phone,
             image=image
         )
@@ -46,6 +51,8 @@ def modifier_logement(request, pk):
         logement.quartier = request.POST['quartier']
         logement.description = request.POST['description']
         logement.superficie = request.POST['superficie']
+        logement.nb_bath = request.POST['nb_bath']
+        logement.nb_room = request.POST['nb_room']
         logement.phone = request.POST['phone']
 
         if 'image' in request.FILES:

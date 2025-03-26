@@ -8,6 +8,7 @@ from .models import Locataire, Proprietaire
 from django.core.files.storage import FileSystemStorage
 
 def register(request):
+    msg = None
     if request.method == "POST":
         typec = request.POST.get('typec')
         username = request.POST['username']
@@ -15,19 +16,21 @@ def register(request):
         phone = request.POST['phone']
         password = request.POST['password']
         
-        user = User.objects.create_user(username=username, email=email, password=password)
-
-
-        if typec == "locataire":
-            Locataire.objects.create(user=user, phone=phone)
-        elif  typec == "propriétaire":
-            Proprietaire.objects.create(user=user, phone=phone)
+        if User.objects.filter(username=username).exists():
+            msg = "Ce nom d'utilisateur est déjà pris."
+        elif User.objects.filter(email=email).exists():
+            msg = "Cet email est déjà utilisé."
         else:
-            pass
-        
-        login(request, user)
-        return redirect('profile')
-    return render(request, 'register.html')
+            user = User.objects.create_user(username=username, email=email, password=password)
+
+            if typec == "locataire":
+                Locataire.objects.create(user=user, phone=phone)
+            elif typec == "propriétaire":
+                Proprietaire.objects.create(user=user, phone=phone)
+            
+            login(request, user)
+            return redirect('home')
+    return render(request, 'register.html', {'msg': msg})
 
 def login_view(request):
     msg = None
@@ -37,10 +40,15 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('profile')
+            if Locataire.objects.filter(user=user).exists():
+                return redirect('home')  # Redirect to locataire-specific dashboard
+            elif Proprietaire.objects.filter(user=user).exists():
+                return redirect('home')  # Redirect to proprietaire-specific dashboard
+            else:
+                return redirect('home')  # Default redirect if no specific role is found
         else:
-            msg="nom d'utilisateur ou mots de passe incorect"
-    return render(request, 'login.html', context={'msg':msg})
+            msg = "Nom d'utilisateur ou mot de passe incorrect"
+    return render(request, 'login.html', context={'msg': msg})
 
 @login_required
 def edit(request):
