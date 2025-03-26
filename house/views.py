@@ -9,16 +9,14 @@ from django.shortcuts import render
 from .models import Logement
 
 from django.shortcuts import render, redirect
-
-
-
-
-
 # Create your views here.
-
- 
-
 #fonction pour supprimer
+
+
+
+
+
+
 
 
 def home(request):

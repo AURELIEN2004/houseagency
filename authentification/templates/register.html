@@ -20,11 +20,10 @@ h1 {
 
 form {
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: auto;
 }
 
 input[type="text"],
@@ -60,8 +59,14 @@ button:hover {
    <div class="col-lg-6 shadow p-4" >
 
     <h3>Creer votre compte</h3>
+    {% if erreur %}
+    <p class="error">{{ erreur }}</p>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
+        {% if msg %}
+        <div class="border border-danger border-2 p-3 my-3 text-danger">{{msg}}</div>
+        {% endif %}
                     <select class="form-control mb-3" name="typec" required>
                         <option value="">Type de compte</option>
                         <option value="locataire">Locataire</option>
@@ -90,7 +95,7 @@ button:hover {
    </div> 
 
   
-    <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj" class="card-img-lef" alt="" height="500" width="500" >
+    <img src="https://www.yonder.fr/sites/default/files/styles/scale_1100x734/public/destinations/1%20Lou%20Pinet%20%C2%A9%20Matthieu%20Salvaing%20%284%29_0.jpg?itok=4ozyFRCj" class="card-img-lef" alt="" height="500" width="550" >
 </div>
 </div>
 

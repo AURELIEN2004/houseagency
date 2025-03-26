@@ -243,26 +243,24 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="entrez un nom" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="entrez une email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="entrez votre message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Envoyer</button>
-                </form>
-            </div>
-            <div id="confirmationMsg">Votre message a été envoyé avec succès. Nous vous contacterons bientôt!</div>
-
+          <div class="contact-form">
+    <form id="contactForm" method="POST" action="/send-email">
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="entrez un nom" required>
         </div>
+
+        <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="entrez une email" required>
+        </div>
+
+        <div class="form-group">
+            <textarea name="message" class="form-control" placeholder="entrez votre message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Envoyer</button>
+    </form>
+</div>
+<div id="confirmationMsg" style="display:none;">Votre message a été envoyé avec succès. Nous vous contacterons bientôt!</div>
     </div>
 </section>
 

@@ -1,54 +1,197 @@
 {% extends "index.html" %}
 {% load static %}
+
 {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<style>
+    .container-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
 
+    .form-group {
+        margin-bottom: 15px;
+    }
 
-<h1>Modifier le logement</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <label for="categorie">Catégorie :</label>
-    <select id="categorie" name="categorie">
-        <option value="catégorie" disabled selected>Catégories</option>
-        <option value="appartement">Appartement</option>
-        <option value="maison">Maison</option>
-        <option value="studio">Studio</option>
-        <option value="chambre">Chambre</option>
-    </select>
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+    .form-control:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+
+    .form-control:invalid {
+        border-color: #dc3545;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 4px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container-form">
+    <h1 style="color: #80bdff;">Modifier le logement</h1>
     
-    <label>Prix :</label>
-    <input type="number" step="0.01" name="prix" value="{{ logement.prix }}" required>
+    <form method="post" enctype="multipart/form-data" id="logementForm" onsubmit="return validateForm()">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="categorie">Catégorie :</label>
+            <select id="categorie" name="categorie" class="form-control" required aria-placeholder="Sélectionnez une catégorie">
+                <option value="" disabled {% if not logement.categorie %}selected{% endif %}>Sélectionnez une catégorie</option>
+                <option value="appartement" {% if logement.categorie == 'appartement' %}selected{% endif %}>Appartement</option>
+                <option value="maison" {% if logement.categorie == 'maison' %}selected{% endif %}>Maison</option>
+                <option value="studio" {% if logement.categorie == 'studio' %}selected{% endif %}>Studio</option>
+                <option value="chambre" {% if logement.categorie == 'chambre' %}selected{% endif %}>Chambre</option>
+            </select>
+        </div>
 
-    <label>Région :</label>
-    <input type="text" name="region" value="{{ logement.region }}" required>
+        <div class="form-group">
+            <label for="prix">Prix :</label>
+            <input type="number" id="prix" step="1" name="prix" value="{{ logement.prix }}" 
+                   class="form-control" required min="0">
+        </div>
 
-    <label>Ville :</label>
-    <input type="text" name="ville" value="{{ logement.ville }}" required>
+        <div class="form-group">
+            <label for="region">Région :</label>
+            <input type="text" id="region" name="region" value="{{ logement.region }}" 
+                   class="form-control" required minlength="2">
+        </div>
 
-    <label>Quartier :</label>
-    <input type="text" name="quartier" value="{{ logement.quartier }}" required>
+        <div class="form-group">
+            <label for="ville">Ville :</label>
+            <input type="text" id="ville" name="ville" value="{{ logement.ville }}" 
+                   class="form-control" required minlength="2">
+        </div>
 
-    <label>Description :</label>
-    <textarea name="description" required>{{ logement.description }}</textarea>
+        <div class="form-group">
+            <label for="quartier">Quartier :</label>
+            <input type="text" id="quartier" name="quartier" value="{{ logement.quartier }}" 
+                   class="form-control" required minlength="2">
+        </div>
 
-    <label>Superficie (m²) :</label>
-    <input type="number" step="0.01" name="superficie" value="{{ logement.superficie }}" required>
+        <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" class="form-control" 
+                      required minlength="10">{{ logement.description }}</textarea>
+        </div>
 
-    <label>Téléphone :</label>
-    <input type="text" name="phone" value="{{ logement.phone }}" required>
+        <div class="form-group">
+            <label for="superficie">Superficie (m²) :</label>
+            <input type="number" id="superficie" step="0.01" name="superficie" 
+                   value="{{ logement.superficie }}" class="form-control" required min="0">
+        </div>
 
-    <label>nombre_chamre :</label>
-    <input type="nb_room" step="1" name="nb_room" value="{{ logement.nb_room }}" required>
+        <div class="form-group">
+            <label for="phone">Téléphone :</label>
+            <input type="tel" id="phone" name="phone" value="{{ logement.phone }}" 
+                   class="form-control" required pattern="[0-9]{10}">
+            <small class="form-text text-muted">Format: 10 chiffres sans espaces</small>
+        </div>
 
-  
-    <label>nombre_douche :</label>
-    <input type="nb_bath" step="1" name="nb_bath" value="{{ logement.nb_bath }}"required>
+        <div class="form-group">
+            <label for="nb_room">Nombre de chambres :</label>
+            <input type="number" id="nb_room" name="nb_room" value="{{ logement.nb_room }}" 
+                   class="form-control" required min="0" step="1">
+        </div>
 
-    <label>Image (laisser vide pour ne pas changer) :</label>
-    <input type="file" name="image">
+        <div class="form-group">
+            <label for="nb_bath">Nombre de salles de bain :</label>
+            <input type="number" id="nb_bath" name="nb_bath" value="{{ logement.nb_bath }}" 
+                   class="form-control" required min="0" step="1">
+        </div>
 
-    <button type="submit" class="btn btn-success">Modifier</button>
-</form>
-<a href="{% url 'gallerie' %}">Annuler</a>
+        <div class="form-group">
+            <label for="image">Image (laisser vide pour ne pas changer) :</label>
+            <input type="file" id="image" name="image" class="form-control-file" 
+                   accept="image/*">
+        </div>
 
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">Modifier</button>
+            <a href="{% url 'gallerie' %}" class="btn btn-secondary">Annuler</a>
+        </div>
+    </form>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Voulez-vous vraiment modifier ce logement ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" id="confirmSubmit">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+
+<script>
+function validateForm() {
+    const form = document.getElementById('logementForm');
+    
+    // Check form validity
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return false;
+    }
+
+    // Show confirmation modal
+    $('#confirmModal').modal('show');
+    return false; // Prevent immediate form submission
+}
+
+// Confirmation button in modal
+document.getElementById('confirmSubmit').addEventListener('click', function() {
+    document.getElementById('logementForm').submit();
+});
+</script>
 {% endblock %}
