@@ -6,39 +6,57 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    .clickable-image {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
 
+.clickable-image:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+</style>
 </head>
 <body>
 
 
 <h1>Résultats de Recherche</h1>
 <div class="row">
-    {% if logements %}
-        {% for logement in logements %}
-        <div class="col-md-3">
-            <div class="card">
-                <img src="{{ logement.image.url }}" alt="" class="card-ing-top" width="300" height="300">
-                <div class="card-body">
-                    <div id="aa{{ logement.id }}" class="card-title">{{ logement.categorie }} à {{ logement.ville }}</div>
-                    <div id="prix{{ logement.id }}" style="color:orange" class="card-text"> {{ logement.prix }}</div>
-                    <a href="{{ logement.id }}" class="btn btn-warning">Voire</a>
-                    <button type="submit" id="{{ logement.id }}" class="btn  btn-success">Reserver</button>
-                     
-                    <button><a href="tel:{{ logement.phone }}" class="btn btn-success"><i class="fas fa-phone"></i></a></button> 
-     
-                    <button><a href="https://wa.me/237{{ logement.phone }}" target="_blank" class="btn btn-success"> <i class="fab fa-whatsapp"></i></a></button>
-     
+    {% for logement in logements %}
+    <div class="col-md-3">
+        <div class="card">
+            <a href="{% url 'detail' logement.id %}">
+                <img src="{{ logement.image.url }}" alt="{{ logement.categorie }} à {{ logement.ville }}" 
+                     class="card-img-top clickable-image" 
+                     width="300" 
+                     height="300">
+            </a>
+            <div class="card-body">
+                <div id="aa{{ logement.id }}" class="card-title">
+                    {{ logement.categorie }} à {{ logement.ville }}
                 </div>
+                <div id="price{{ logement.id }}" style="color:orange" class="card-text">
+                    {{ logement.prix }} €
+                </div>
+                <a href="{% url 'detail' logement.id %}" class="btn btn-warning">Voir</a>
+                <button id="{{ logement.id }}" class="btn btn-success">Réserver</button>
+                
+                <button>
+                    <a href="tel:{{ logement.phone }}" class="btn btn-success">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </button> 
+
+                <button>
+                    <a href="https://wa.me/237{{ logement.phone }}" target="_blank" class="btn btn-success">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </button>
             </div>
         </div>
-        {% endfor %}
-    {% else %}
-        <div class="col-12">
-            <div class="alert alert-warning text-center" role="alert">
-                Aucun logement trouvé pour votre recherche.
-            </div>
-        </div>
-    {% endif %}
+    </div>
+    {% endfor %}
 </div>
 <a href="{% url 'home' %}">Nouvelle recherche</a>
 
