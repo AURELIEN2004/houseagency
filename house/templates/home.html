@@ -98,8 +98,12 @@
             <!-- Rangée 1 -->
             <div class="property-card">
                 <div class="property-image">
-                    <img src="{{logement.image.url}}" class="card-img-top" alt="..." style="height: 300px; width: 370px;" >
-                    <span class="property-tag">{{logement.categorie}}</span>
+                    <a href="{% url 'detail' logement.id %}">
+                        <img src="{{ logement.image.url }}" alt="{{ logement.categorie }} à {{ logement.ville }}" 
+                             class="card-img-top clickable-image" 
+                             width="370px" 
+                             height="300px">
+                    </a>                    <span class="property-tag">{{logement.categorie}}</span>
                     <button class="favorite-btn"><i class="far fa-heart"></i></button>
                 </div>
                 <div class="property-price">{{logement.prix}} Xaf/Mois</div>

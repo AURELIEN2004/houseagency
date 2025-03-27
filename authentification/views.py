@@ -17,6 +17,7 @@ def register(request):
         password = request.POST['password']
         profile_image = request.FILES.get('profile_image')  # Get the uploaded profile image
         
+        
         if User.objects.filter(username=username).exists():
             msg = "Ce nom d'utilisateur est déjà pris."
         elif User.objects.filter(email=email).exists():

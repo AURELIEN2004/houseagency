@@ -1,127 +1,173 @@
 {% extends "index.html" %}
 {% load static %}
-{% block content%}
-
+{% block content %}
 <style>
-       
-    .table1{
-        width: 990px;
-        border-collapse: collapse;
-        border-radius: 10px;
-        
+    body {
+        background-color: #f4f6f9;
+        font-family: 'Arial', sans-serif;
     }
-    .table1 th {
-        width: 489px; /* Largeur de chaque cellule */
-        height: 30px; /* Hauteur de chaque cellule */
-        border: 1px solid #0f0f0f;
-        padding: 8px;
-        
-     }
-     .table1 td {
-        width: 489px; /* Largeur de chaque cellule */
-        height: 30px; /* Hauteur de chaque cellule */
-        border: 1px solid #ddd;
-        padding: 8px;
-        border: 1px solid #0f0f0f;
-     }
-    .table1 th {
-        background-color: #4CAF50;
+    .container-details {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .details-title {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .card-details {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .card-details:hover {
+        transform: scale(1.02);
+    }
+    .table-details {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    .table-details th {
+        background-color: #3498db;
         color: white;
-    }
-    .table2{
-        width: 990px;
-        border-collapse: collapse;
-    }
-    
-    .table2 th, td {
-        width: 150px; /* Largeur de chaque cellule */
-        height: 30px; /* Hauteur de chaque cellule */
-        border: 1px solid #ddd;
-        padding: 8px;
+        padding: 12px;
         text-align: left;
-        border: 1px solid #0f0f0f;
-     }
-    .table2 th {
-        background-color: #4CAF50;
-        color: white;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        letter-spacing: 1px;
     }
-    h2{
-        text-align: center;
-        color: #1254ce;
+    .table-details td {
+        padding: 15px;
+        border-bottom: 1px solid #ecf0f1;
     }
-    td.href{
-        width: 100px; /* Largeur de chaque cellule */
-        height: 30px; 
+    .table-details tr:last-child td {
+        border-bottom: none;
     }
-    
+    .table-details tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+    .image-container {
+        max-height: 350px;
+        overflow: hidden;
+        position: relative;
+    }
+    .image-container img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    .image-container:hover img {
+        transform: scale(1.05);
+    }
+    .contact-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+    .contact-buttons .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+    }
+    .description-cell {
+        line-height: 1.6;
+        color: #2c3e50;
+    }
+    .price-highlight {
+        color: #27ae60;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    .back-button {
+        margin-top: 20px;
+        display: inline-flex;
+        align-items: center;
+    }
 </style>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<body>
+<div class="container-details">
+    <h2 class="text-center details-title">Détails du Logement</h2>
 
-<h2 class="text-center text-decoration">Details des logements</h2>
-<div class="table1">  
-<table>
+    <div class="card-details">
+        <table class="table-details">
+            <thead>
+                <tr>
+                    <th>Image: {{ logement.categorie }}</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="image-container">
+                            <img src="{{ logement.image.url }}" alt="Logement Image">
+                        </div>
+                    </td>
+                    <td class="description-cell">{{ logement.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-   <thead>  
-  <tr>
-    <th>image</th>
-    <th>Description</th>
-  </tr>
-  </thead>
+    <div class="card-details">
+        <table class="table-details">
+            <thead>
+                <tr>
+                    <th>Prix</th>
+                    <th>Région</th>
+                    <th>Ville</th>
+                    <th>Quartier</th>
+                    <th>Superficie</th>
+                    <th>chambres</th>
+                    <th>salles de bain</th>
+                    <th>Contact</th>
 
-<tbody>
-<tr> 
-    <td>
-        <img src="{{ logement.image.url }}" style="width: 490px; height: 250px;">
-    </td>
-    <td>{{ logement.description }}  </td>
-    
-</tr>
-</tbody>
- </table> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="price-highlight">$ {{ logement.prix }}</td>
+                    <td>{{ logement.region }}</td>
+                    <td>{{ logement.ville }}</td>
+                    <td>{{ logement.quartier }}</td>
+                    <td>{{ logement.superficie }} m²</td>
+                    <td>{{ logement.nb_room }} </td>
+                    <td>{{ logement.nb_bath }}</td>
+                    <td>
+                        <div class="contact-buttons">
+                            <a href="tel:{{ logement.phone }}" class="btn btn-success">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                            <a href="https://wa.me/237{{ logement.phone }}" target="_blank" class="btn btn-success">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="sms:237{{ logement.phone }}?body=Bonjour%20j%27aimerais%20visiter%20votre%20logement." class="btn btn-primary">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="btn btn-secondary back-button">Retour</a>
+        
+    </a>
 </div>
-
-<div class="table2">
-<table>
-    <thead>
-
-
-        <tr>
-            <th>Categorie</th>
-            <th>Prix</th>
-            <th>Region</th>
-            <th>Ville</th>
-            <th>Quartier</th>
-            <th>Superficie</th>
-            <th>proprietaire</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td> {{ logement.categorie }}</td>
-            <td> $ {{ logement.prix }}</td>
-            <td>{{ logement.region }}</td>
-            <td>{{ logement.ville }}</td>
-            <td>{{ logement.quartier }}</td>
-            <td> {{ logement.superficie }}</td> 
-            <td><button ><a href="tel:{{ logement.phone }}"class="btn btn-success"><i class="fas fa-phone"></i></a></button> 
-
-            <button><a href="https://wa.me/237{{ logement.phone }}" target="_blank"class="btn btn-success"> <i class="fab fa-whatsapp"></i></a></button>
-            </td>
-            
-        </tr>
-       
-    </tbody>
-</table> 
-</div>
-<br>
-
-<a href="gallery"><button id="{{ logement.id }}" class="btn ted btn-success">Retour</button>
-</a>
-
-</body>
-</html>
 {% endblock %}

@@ -62,7 +62,7 @@ button:hover {
     {% if erreur %}
     <p class="error">{{ erreur }}</p>
     {% endif %}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% if msg %}
         <div class="border border-danger border-2 p-3 my-3 text-danger">{{msg}}</div>

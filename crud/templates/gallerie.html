@@ -14,7 +14,11 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
     {% for logement in logements %}
     <div class="col-md-3">
         <div class="card">
-            <img src="{{ logement.image.url }}" alt="" class="card-img-top" style="height: 300px; width: 300px;">
+            <a href="{% url 'detail' logement.id %}">
+                <img src="{{ logement.image.url }}" alt="{{ logement.categorie }} à {{ logement.ville }}" 
+                     class="card-img-top clickable-image" 
+                     style="width: 100%; height: 300px; object-fit: cover;">
+            </a>   
             <div class="card-body">
                 <div id="aa{{ logement.id }}" class="card-title">{{ logement.categorie }} à {{ logement.ville }}</div>
                 <div id="price{{ logement.id }}" style="color:orange" class="card-text"> fcfa {{ logement.prix }}</div>
@@ -28,5 +32,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
     {% endfor %}
 </div>
 
+<a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="btn btn-secondary back-button">Retour</a>
 
 {% endblock %}
