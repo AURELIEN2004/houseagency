@@ -143,6 +143,16 @@
                    accept="image/*">
         </div>
 
+        <div class="form-group">
+            <label for="etat">Etat :</label>
+            <select id="etat" name="etat" class="form-control" required aria-placeholder="Sélectionnez une catégorie">
+                <option value="" disabled {% if not logement.categorie %}selected{% endif %}>Sélectionnez une catégorie</option>
+                <option value="disponible" {% if logement.categorie == 'disponible' %}selected{% endif %}>disponible</option>
+                <option value="reservée" {% if logement.categorie == 'reservée' %}selected{% endif %}>reservée</option>
+                <option value="occcupée" {% if logement.categorie == 'occupée' %}selected{% endif %}>occupée</option>
+            </select>
+        </div>
+
         <div class="form-actions">
             <button type="submit" class="btn btn-success">Modifier</button>
             <a href="{% url 'gallerie' %}" class="btn btn-secondary">Annuler</a>

@@ -8,6 +8,11 @@ class Logement(models.Model):
         ('studio', 'Studio'),
         ('chambre', 'Chambre'),
     ]
+    ETATS = [
+        ('disponible', 'disponible'),
+        ('reservée', 'reservée'),
+        ('occupee', 'occupee'),
+    ]
 
     categorie = models.CharField(max_length=50, choices=CATEGORIES)
     prix = models.DecimalField(max_digits=10, decimal_places=2)
@@ -21,7 +26,7 @@ class Logement(models.Model):
     nb_room = models.FloatField(max_length=15, blank=True)
     nb_bath = models.FloatField(max_length=15, blank=True)
     date_added = models.DateTimeField(auto_now=True)
-
+    etat = models.CharField(max_length=50, choices=ETATS)
 
 
 

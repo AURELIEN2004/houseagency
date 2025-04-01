@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
 
 </style>
@@ -103,8 +103,17 @@
                              class="card-img-top clickable-image" 
                              width="370px" 
                              height="300px">
-                    </a>                    <span class="property-tag">{{logement.categorie}}</span>
-                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                    </a>
+                    <span class="property-tag">{{logement.categorie}}</span>
+
+                        
+                        <button type="submit" class="favorite-btn">
+                            <i class="far fa-heart"></i>
+                        
+                    
+                
+                  
+                    
                 </div>
                 <div class="property-price">{{logement.prix}} Xaf/Mois</div>
                 <div class="property-location"><i class="fas fa-map-marker-alt"></i> {{logement.region}},
@@ -115,6 +124,7 @@
                     <span><i class="fas fa-bath"></i> {{logement.nb_bath}}</span>
                     <span><i class="fas fa-ruler-combined"></i> {{logement.superficie}}</span>
                     <!-- <span><i class="fas fa-warehouse"></i> {{logement.nb_room}}</span> -->
+                    <button class="btn btn-success">{{logement.etat}}</button>
                 </div>
             </div>
         
