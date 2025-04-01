@@ -1265,6 +1265,10 @@ img {
                         <a href="{% url 'logout' %}" class="login-btn" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
                     </div>
                 </div>
+                <div class="profile">
+                    <img src="{{ user.proprietaire.profile_image.url }}">
+                    <div class="col-7" style="color: #333;">{{ user.username }}</div>
+                </div>
                 {% elif user.locataire %}
                 <div class="dropdown">
                     <button class="dropbtn"><i class="fas fa-user-circle"></i> </button>
@@ -1272,7 +1276,11 @@ img {
                         <a href="{% url 'compte' %}">Mon Compte</a>
                         <a href="{% url 'logout' %}" class="login-btn" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
                     </div>
-                </div>          
+                </div> 
+                <div class="profile">
+                    <img src="{{ user.locataire.profile_image.url }}">
+                    <div class="col-7" style="color: #333;">{{ user.username }}</div>
+                </div>         
             {% endif %}
 
             {% else %}
@@ -1280,10 +1288,7 @@ img {
             {% endif %}
             
         
-            <div class="profile">
-                <img src="{{ profile.profile_image.url }}">
-                <div class="col-7" style="color: #333;">{{ user.username }}</div>
-            </div>
+            
         
         </div>           
            
