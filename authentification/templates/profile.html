@@ -6,77 +6,61 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
 
-   
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        
+    h3, h2 {
+        text-align: center;
+        color: #343a40;
+    }
 
-        .profile-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: auto;
-            text-align: center;
-        }
-        h2 {
-            color: #333;
-        }
-        img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-        }
-        .contact-info, .basic-info {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        label {
-            font-weight: bold;
-        }
-        .edit-button, .logout-button, .upload-button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 5px;
-        }
-        .edit-button:hover, .logout-button:hover, .upload-button:hover {
-            background-color: #0056b3;
-        } footer{
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
+    a {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+        color: #007bff;
+        text-decoration: none;
+        font-size: 18px;
+    }
 
-        }
-    </style>
+    a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
 
-{% if  user.is_authenticated %} 
+    button {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+
+{% if user.is_authenticated %} 
 <h3>Bienvenus {{ user.username }}</h3><br><br>
 <a href="{% url 'compte' %}"><i class="fas fa-user"></i> Profile</a><br><br>
 <a href="{% url 'ajouter_logement' %}"><i class="fas fa-home"></i> Ajouter Logement</a><br><br>
 <a href="{% url 'gallerie' %}"><i class="fas fa-images"></i> Mes Publications</a><br><br>
 <a href="{% url 'delete_account' %}"><i class="fas fa-trash-alt"></i> Supprimer Compte</a><br><br>
 
-
-
 {% else %}
-
-
 <h2>Veiller vous authentifier s ils vous plais</h2> 
 <a href="{% url 'register' %}"><button type="submit" class="btn btn-success">s inscrire</button></a>
 <h2>Vous avez deja un compte ,</h2> 
 <a href="{% url 'login' %}"><button type="submit" class="btn btn-success">Se connecter</button></a>
-
 {% endif %}
 
 <script>
@@ -86,12 +70,5 @@
     }
 </script>
 
-
-
-
-
-
-  
-  {% endblock %}
-
+{% endblock %}
 
