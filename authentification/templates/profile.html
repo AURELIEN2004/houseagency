@@ -62,10 +62,10 @@
 
 {% if  user.is_authenticated %} 
 <h3>Bienvenus {{ user.username }}</h3><br><br>
-<a href="{% url 'compte' %}">Mon compte</a><br><br>
-<a href="{% url 'ajouter_logement' %}">ajouter_logement</a><br><br>
-<a href="{% url 'gallerie' %}">Mes publication</a><br><br>
-<a href="{% url 'delete_account' %}">supprimer compte</a><br><br>
+<a href="{% url 'compte' %}"><i class="fas fa-user"></i> Profile</a><br><br>
+<a href="{% url 'ajouter_logement' %}"><i class="fas fa-home"></i> Ajouter Logement</a><br><br>
+<a href="{% url 'gallerie' %}"><i class="fas fa-images"></i> Mes Publications</a><br><br>
+<a href="{% url 'delete_account' %}"><i class="fas fa-trash-alt"></i> Supprimer Compte</a><br><br>
 
 
 

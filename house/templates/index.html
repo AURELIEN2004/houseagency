@@ -35,15 +35,7 @@
 <!-- Polyfills pour compatibilité -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"></script>
 
-<style>
-  /* Force l'affichage pour Chrome */
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .nav-right, .dropdown, .dropdown-content, .profile {
-      display: flex !important;
-      visibility: visible !important;
-    }
-  }
-</style>
+
 </head>
 <style>
     /* Styles généraux */
@@ -1258,40 +1250,7 @@ img {
     }
 }
 </style>
-<style>
-    /* Assurer la compatibilité entre navigateurs */
-.dropdown, .dropdown-content, .profile {
-  display: block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
-/* Force l'affichage pour Chrome */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .nav-right {
-    display: flex !important;
-    align-items: center;
-    visibility: visible !important;
-  }
-}
-/* Règles spécifiques pour corriger l'affichage dans Chrome */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .nav-right {
-    display: flex !important;
-    align-items: center;
-    visibility: visible !important;
-  }
-  
-  .dropdown, .dropdown-content {
-    display: block !important;
-  }
-  
-  .profile img {
-    display: inline-block !important;
-  }
-}
-</style>
 <body>
     <!-- Navbar avec logo -->
     <header class="navbar">
@@ -1320,9 +1279,9 @@ img {
                 <div class="dropdown">
                     <button class="dropbtn"><i class="fas fa-user-circle"></i> </button>
                     <div class="dropdown-content">
-                        <a href="{% url 'compte' %}">Mon Compte</a>
-                        <a href="{% url 'profile' %}" class="login-btn"><i class="fas fa-user-circle"></i> Dashboard</a>
-                        <a href="{% url 'logout' %}" class="login-btn" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                        <a href="{% url 'compte' %}"><i class="fas fa-user" ></i>    Profile</a>
+                        <a href="{% url 'profile' %}" ><i class="fas fa-cogs"></i> Dashbord</a>
+                        <a href="{% url 'logout' %}"  onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
                     </div>
                 </div>
                 <div class="profile">
@@ -1333,8 +1292,8 @@ img {
                 <div class="dropdown">
                     <button class="dropbtn"><i class="fas fa-user-circle"></i> </button>
                     <div class="dropdown-content">
-                        <a href="{% url 'compte' %}">Mon Compte</a>
-                        <a href="{% url 'logout' %}" class="login-btn" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                        <a href="{% url 'compte' %}"><i class="fas fa-user-circle"></i>  Profile</a>
+                        <a href="{% url 'logout' %}"  onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
                     </div>
                 </div> 
                 <div class="profile">
